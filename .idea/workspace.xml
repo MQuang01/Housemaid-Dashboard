@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="51efc443-fda5-45b7-895f-4cbb3e37478a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/public/assets/css/demo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/avatars/1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/avatars/5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/avatars/6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/avatars/7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/backgrounds/18.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/elements/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/elements/11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/elements/12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/elements/13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/elements/17.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/elements/18.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/elements/19.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/elements/2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/elements/20.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/elements/3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/elements/4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/elements/5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/elements/7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/favicon/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/icons/brands/asana.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/icons/brands/behance.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/icons/brands/dribbble.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/icons/brands/facebook.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/icons/brands/github.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/icons/brands/google.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/icons/brands/instagram.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/icons/brands/mailchimp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/icons/brands/slack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/icons/brands/twitter.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/icons/unicons/cc-primary.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/icons/unicons/cc-success.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/icons/unicons/cc-warning.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/icons/unicons/chart-success.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/icons/unicons/chart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/icons/unicons/paypal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/icons/unicons/wallet-info.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/icons/unicons/wallet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/illustrations/girl-doing-yoga-light.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/illustrations/man-with-laptop-light.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/illustrations/page-misc-error-light.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/layouts/layout-container-light.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/layouts/layout-fluid-light.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/layouts/layout-without-menu-light.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/layouts/layout-without-navbar-light.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/dashboards-analytics.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/extended-ui-perfect-scrollbar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/form-basic-inputs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/pages-account-settings-account.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/ui-modals.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/ui-popover.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/ui-toasts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/libs/apex-charts/apex-charts.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/libs/apex-charts/apexcharts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/libs/highlight/highlight-github.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/libs/highlight/highlight.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/libs/highlight/highlight.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/libs/jquery/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/libs/masonry/masonry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/libs/perfect-scrollbar/perfect-scrollbar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/libs/perfect-scrollbar/perfect-scrollbar.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/libs/popper/popper.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_accordion.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_alert.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_badge.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_breadcrumb.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_button-group.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_buttons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_card.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_carousel.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_close.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_dropdown.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_forms.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_functions.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_include.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_list-group.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_mixins.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_modal.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_nav.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_navbar.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_offcanvas.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_pagination.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_popover.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_progress.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_reboot.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_root.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_spinners.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_tables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_toasts.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_tooltip.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_type.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_utilities-ltr.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_utilities.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/forms/_floating-labels.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/forms/_form-control.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/forms/_form-range.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/forms/_form-select.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/forms/_input-group.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/forms/_labels.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/forms/_validation.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/mixins/_alert.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/mixins/_badge.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/mixins/_buttons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/mixins/_caret.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/mixins/_dropdown.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/mixins/_forms.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/mixins/_list-group.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/mixins/_misc.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/mixins/_navs.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/mixins/_pagination.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/mixins/_progress.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/mixins/_table-variants.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap-extended/mixins/_toasts.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_bootstrap.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_colors.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_components.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_components/_app-brand.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_components/_avatar.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_components/_base.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_components/_common.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_components/_footer.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_components/_include.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_components/_layout.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_components/_menu.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_components/_mixins.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_components/_text-divider.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_components/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_components/mixins/_app-brand.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_components/mixins/_avatar.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_components/mixins/_footer.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_components/mixins/_menu.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_components/mixins/_misc.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_components/mixins/_navbar.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_components/mixins/_text-divider.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_custom-variables/_bootstrap-extended.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_custom-variables/_components.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_custom-variables/_libs.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_custom-variables/_pages.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_custom-variables/_support.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_theme/_common.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/_theme/_theme.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/core.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/pages/page-account-settings.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/pages/page-auth.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/pages/page-icons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/pages/page-misc.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/scss/theme-default.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/vendor/css/core.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/vendor/css/pages/page-account-settings.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/vendor/css/pages/page-auth.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/vendor/css/pages/page-icons.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/vendor/css/pages/page-misc.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/vendor/css/theme-default.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/vendor/fonts/boxicons.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/vendor/fonts/boxicons/boxicons.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/vendor/fonts/boxicons/boxicons.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/vendor/fonts/boxicons/boxicons.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/vendor/fonts/boxicons/boxicons.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/vendor/fonts/boxicons/boxicons.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/vendor/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/vendor/js/helpers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/vendor/js/menu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/vendor/libs/apex-charts/apex-charts.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/vendor/libs/apex-charts/apexcharts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/vendor/libs/highlight/highlight-github.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/vendor/libs/highlight/highlight.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/vendor/libs/highlight/highlight.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/vendor/libs/jquery/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/vendor/libs/masonry/masonry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/vendor/libs/popper/popper.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Pages/DasboardUser.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Pages/Dashboard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/footer/Footer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/layouts/LayoutPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/layouts/LayoutUser.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/menu/MenuDashboard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/menu/MenuUser.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/navbar/Nav.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/pagination/Pagination.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/service/UserService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/until/InforUrl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2eD3t8fPiVKz6VMnQFKG4XS2eae" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Project6/housemaid-dashboard/src/components&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Project6\housemaid-dashboard\src\components" />
+      <recent name="D:\Project6\housemaid-dashboard\public" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Project6\housemaid-dashboard\src" />
+      <recent name="D:\Project6\housemaid-dashboard\src\components\Pages" />
+      <recent name="D:\Project6\housemaid-dashboard\src\components\layouts" />
+      <recent name="D:\Project6\housemaid-dashboard\src\components\navbar" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.npm start">
+    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="npm start" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="51efc443-fda5-45b7-895f-4cbb3e37478a" name="Changes" comment="" />
+      <created>1711425532877</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1711425532877</updated>
+      <workItem from="1711425534317" duration="12066000" />
+      <workItem from="1711447343718" duration="50000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
