@@ -1,10 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import Dashboard from "./components/Pages/Dashboard";
+import Dashboard from "./components/pages/Dashboard";
 import {Suspense} from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import DasboardClient from "./components/Pages/DasboardUser";
-
+import DashboardCustomer from "./components/pages/DasboardUser";
+import DashboardJob from "./components/pages/DashboardJob";
 function App() {
   return (
       <>
@@ -13,7 +13,9 @@ function App() {
           <Suspense>
             <Routes>
               <Route path='/' element={<Dashboard/>} />
-                <Route path='/client' element={<DasboardClient />} />
+                <Route path='/customer' element={<DashboardCustomer />} />
+                <Route path='/job' element={<DashboardJob />} />
+
             </Routes>
           </Suspense>
           {/*</AuthProvider>*/}
