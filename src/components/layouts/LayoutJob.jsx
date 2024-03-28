@@ -2,11 +2,12 @@ import Nav from "../navbar/Nav";
 import Footer from "../footer/Footer";
 import React, { useState, useEffect } from 'react';
 import Pagination from "../pagination/Pagination";
-import { fetchCustomersPaging } from "../../service/UserService";
+import { fetchJobsPaging } from "../../service/JobService";
+import ModalCreateJob from "../modal/ModalCreateJob";
 
-const LayoutPage = () => {
+const LayoutJob = () => {
     const [loading, setLoading] = useState(false);
-    const [customer, setCustomer] = useState([]);
+    const [job, setJob] = useState([]);
     const [dataPage, setDataPage] = useState(
         {
             page: 0,
@@ -14,17 +15,24 @@ const LayoutPage = () => {
         }
     );
     const defaultImageUrl = "https://bom.so/KozLmH"
-        
+
+    const [show, setShow] = useState(false);
+
+    const handleShowCreateModal = () => {
+        console.log("aaaaa");
+        setShow(true);
+    };
+
     
+
 
     function fetchDataPage(newDataPage) {
         setDataPage(newDataPage);
     }
 
-
     useEffect(() => {
-        fetchCustomersPaging(dataPage.page).then((data) => {
-            setCustomer(data.content);
+        fetchJobsPaging(dataPage.page).then((data) => {
+            setJob(data.content);
             setDataPage(
                 {
                     ...dataPage,
@@ -34,15 +42,7 @@ const LayoutPage = () => {
         })
     }, [dataPage, dataPage.page]);
 
-    console.log(customer)
 
-    // useEffect(() => {
-    //     // Gọi API để lấy dữ liệu và cập nhật state
-    //     fetch('URL_API')
-    //         .then(response => response.json())
-    //         .then(data => setUsers(data))
-    //         .catch(error => console.log(error));
-    // }, []);
     return (
         <>
             <div className="layout-page">
@@ -53,40 +53,36 @@ const LayoutPage = () => {
                         <div className="card">
                             <div className="card-header">
                                 <div className="d-flex justify-content-between align-items-center">
-                                    <button className="btn btn-primary btn-lm">Tạo khách hàng</button>
+                                    <button className="btn btn-primary btn-lm" onClick={handleShowCreateModal}>Tạo công việc</button>
                                 </div>
                             </div>
-
                             <div className="table-responsive text-nowrap">
-                                <table className="table">
+                                <table className="table table-light table-hover">
                                     <thead>
                                         <tr>
                                             <th>STT</th>
-                                            <th>Họ và Tên</th>
+                                            <th>Tên công việc</th>
                                             <th>Ảnh</th>
-                                            <th>Email</th>
-                                            <th>Địa chỉ</th>
-                                            <th>SĐT</th>
-                                            <th>Ngày sinh</th>
-                                            <th>Giới tính</th>
+                                            <th style={{ textAlign: 'right' }}>Giá tiền</th>
+                                            <th style={{ textAlign: 'right' }}>Thời gian ước tính</th>
+                                            <th>Loại dịch vụ</th>
                                             <th>Thao tác</th>
                                         </tr>
                                     </thead>
                                     <tbody className="table-border-bottom-0">
-                                        {customer.map((c, index) => (
-                                            <tr key={index}>
+                                        {job.map((job, index) => (
+                                            <tr key={job.id}>
                                                 <td>{index + 1}</td>
-                                                <td><i className="fa-lg text-danger "></i> <strong>{c.fullName}</strong></td>
-                                                <td>{c.fileUrl ? (
-                                                    <img src={c.fileUrl} height="40px" width="40px" />
+                                                <td><i className="fa-lg text-danger "></i> <strong>{job.name}</strong></td>
+                                                <td>{job.urlImage ? (
+                                                    <img src={job.urlImage} height="40px" width="40px" />
                                                 ) : (
                                                     <img src={defaultImageUrl} height="40px" width="40px" />
                                                 )}</td>
-                                                <td>{c.email}</td>
-                                                <td>{c.address}</td>
-                                                <td>{c.phone}</td>
-                                                <td>{c.dob}</td>
-                                                <td>{c.gender}</td>
+                                                <td style={{ textAlign: 'right' }}>{job.price.toLocaleString('vi-VN')} VNĐ</td>
+
+                                                <td style={{ textAlign: 'right' }}>{job.timeApprox}</td>
+                                                <td>{job.cate}</td>
                                                 <td>
                                                     <div className="dropdown">
                                                         <button type="button" className="btn p-0 dropdown-toggle hide-arrow"
@@ -110,6 +106,8 @@ const LayoutPage = () => {
                                 <div className="card-footer d-flex justify-content-center">
                                     <Pagination dataPage={dataPage} setDataPage={fetchDataPage} loading={loading} setLoading={setLoading} />
                                 </div>
+                                <ModalCreateJob show={show} handleClose={() => setShow(false)}/>
+
                             </div>
                         </div>
 
@@ -117,9 +115,8 @@ const LayoutPage = () => {
                     <Footer />
                     <div className="content-backdrop fade"></div>
                 </div>
-
             </div>
         </>
     )
 }
-export default LayoutPage;
+export default LayoutJob;

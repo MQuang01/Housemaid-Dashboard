@@ -1,20 +1,20 @@
 
 
 import MenuUser from "../menu/MenuUser";
-import LayoutClient from "../layouts/LayoutUser";
+import LayoutCustomer from "../layouts/LayoutUser";
 
 
-function Dashboard() {
+function DashboardUser() {
     return (
         <div className="App">
             <div className="layout-wrapper layout-content-navbar">
                 <div className="layout-container">
                     <MenuUser/>
-                    <LayoutClient/>
+                    <LayoutCustomer/>
                 </div>
             </div>
         </div>
 
     );
 }
-export default Dashboard;
+export default DashboardUser;
