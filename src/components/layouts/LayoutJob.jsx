@@ -59,7 +59,7 @@ const LayoutJob = () => {
                 <Nav />
                 <div className="content-wrapper">
                     <div className="container-xxl flex-grow-1 container-p-y">
-                        <h4 className="fw-bold py-3 mb-2"><span className="text-muted fw-light">Dữ liệu /</span> Thống kê khách hàng</h4>
+                        <h4 className="fw-bold py-3 mb-2"><span className="text-muted fw-light">Dữ liệu /</span> Thống kê công việc</h4>
                         <div className="card">
                             <div className="card-header">
                                 <div className="d-flex justify-content-between align-items-center">
