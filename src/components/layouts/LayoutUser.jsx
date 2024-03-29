@@ -32,7 +32,7 @@ const LayoutPage = () => {
                 }
             );
         })
-    }, [dataPage, dataPage.page]);
+    }, []);
 
     console.log(customer)
 
