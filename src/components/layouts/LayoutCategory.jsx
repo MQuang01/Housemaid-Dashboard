@@ -1,11 +1,17 @@
 import Nav from "../navbar/Nav";
 import Footer from "../footer/Footer";
 import React, { useState, useEffect } from 'react';
-import {fetchCategories} from "../../service/CategoryService";
+import {fetchCategories,fetchDeleteCategoryById} from "../../service/CategoryService";
 import ModalCreateCategory from "../modal/ModalCreateCategory";
+// import { yupResolver } from '@hookform/resolvers/yup';
+// import { useForm } from "react-hook-form";
+
 
 
 const LayoutCategory = () => {
+    // const { register, handleSubmit, reset,setValue,getValues, formState: { errors } } = useForm({
+    //     resolver: yupResolver(schema)
+    // });
 
     const [categories, setCategory] = useState([]);
     useEffect(() => {
@@ -17,13 +23,29 @@ const LayoutCategory = () => {
         console.log("aaaaa");
         setShow(true);
     };
+    const handleCategoryCreate = async (newCategory) => {
+        try {
+            // Gọi lại API để fetch danh sách công việc mới từ cơ sở dữ liệu
+            const response = await fetchCategories(newCategory);
+            // Cập nhật state job với danh sách công việc mới
+            setCategory(response.content);
+        } catch (error) {
+            console.error('Error updating job list after creation: ', error);
+        }
+    };
+
+    const handleBtnDelete = async (id) => {
+        window.confirm('Are you sure you want to delete this product?');
+
+        await fetchDeleteCategoryById(id);
+    }
     return(
         <>
             <div className="layout-page">
                 <Nav />
                 <div className="content-wrapper">
                     <div className="container-xxl flex-grow-1 container-p-y">
-                        <h4 className="fw-bold py-3 mb-2"><span className="text-muted fw-light">Dữ liệu /</span> Thống kê khách hàng</h4>
+                        <h4 className="fw-bold py-3 mb-2"><span className="text-muted fw-light">Dữ liệu /</span> Thống kê dịch vụ</h4>
                         <div className="card">
                             <div className="card-header">
                                 <div className="d-flex justify-content-between align-items-center">
@@ -59,7 +81,7 @@ const LayoutCategory = () => {
                                                         <a className="dropdown-item" href="javascript:void(0);"
                                                         ><i className="fa fa-edit me-1"></i> Edit</a
                                                         >
-                                                        <a className="dropdown-item" href="javascript:void(0);"
+                                                        <a className="dropdown-item" onClick={() =>handleBtnDelete(category.id)}
                                                         ><i className="fa fa-trash me-1"></i> Delete</a
                                                         >
                                                     </div>
@@ -70,7 +92,7 @@ const LayoutCategory = () => {
                                     </tbody>
                                 </table>
 
-                                <ModalCreateCategory show={show} handleClose={() => setShow(false)}/>
+                                <ModalCreateCategory show={show} handleClose={() => setShow(false)} onJobCreate={handleCategoryCreate}/>
 
                             </div>
                         </div>

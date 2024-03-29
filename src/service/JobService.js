@@ -20,7 +20,7 @@ export const fetchAddJob = async (jobData) => {
 }
 export const fetchAddJobFormData = async (frmData) => {
     try {
-        const response = axios.post(`${InforUrl}/jobs`, frmData, {
+        const response = await axios.post(`${InforUrl}/jobs`, frmData, {
            
         headers: {
             'Content-Type': 'multipart/form-data' // Đặt kiểu dữ liệu content-type là 'multipart/form-data'
@@ -32,3 +32,4 @@ export const fetchAddJobFormData = async (frmData) => {
         console.error('Error adding job: ', error);
     }
 }
+
