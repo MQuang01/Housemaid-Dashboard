@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Dashboard from "./components/pages/Dashboard";
 import {Suspense} from "react";
@@ -7,6 +6,9 @@ import DashboardCustomer from "./components/pages/DasboardUser";
 import DashboardJob from "./components/pages/DashboardJob";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import DashboardCategory from "./components/pages/DashboardCategory";
+
+
 function App() {
   return (
       <>
@@ -17,8 +19,7 @@ function App() {
               <Route path='/' element={<Dashboard/>} />
                 <Route path='/customer' element={<DashboardCustomer />} />
                 <Route path='/job' element={<DashboardJob />} />
-               
-
+                <Route path='/category' element={<DashboardCategory/>} />
             </Routes>
           </Suspense>
           {/*</AuthProvider>*/}

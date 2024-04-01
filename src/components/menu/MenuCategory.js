@@ -1,4 +1,5 @@
-const MenuDashboard = () => {
+
+const MenuCategory = () => {
     return (
         <>
             <aside id="layout-menu" className="layout-menu menu-vertical menu bg-menu-theme">
@@ -15,18 +16,17 @@ const MenuDashboard = () => {
 
                 <ul className="menu-inner py-1">
 
-                    <li className="menu-item active">
-                        <a href="/" className="menu-link" >
+                    <li className="menu-item">
+                        <a href="/" className="menu-link">
                             <i className="menu-icon tf-icons fa fa-home"></i>
                             <div data-i18n="Analytics">Dashboard</div>
                         </a>
                     </li>
-
                     <li className="menu-header small text-uppercase">
                         <span className="menu-header-text">Pages</span>
                     </li>
-                    <li className="menu-item">
-                        <a href="/customer" className="menu-link">
+                    <li className="menu-item ">
+                        <a href="/customer" className="menu-link active">
                             <i className="menu-icon tf-icons fa fa-table"></i>
                             <div data-i18n="Tables">Khách hàng</div>
                         </a>
@@ -34,13 +34,13 @@ const MenuDashboard = () => {
                     <li class="menu-item">
                         <a href="/job" class="menu-link">
                             <i class="menu-icon tf-icons fa fa-table"></i>
-                            <div data-i18n="Boxicons">Dịch vụ</div>
+                            <div data-i18n="Boxicons">Công việc</div>
                         </a>
                     </li>
-                    <li className="menu-item">
+                    <li className="menu-item active">
                         <a href="/category" className="menu-link">
                             <i className="menu-icon tf-icons fa fa-table"></i>
-                            <div data-i18n="Boxicons">Các loai dịch vụ</div>
+                            <div data-i18n="Boxicons">Các loại dịch vụ</div>
                         </a>
                     </li>
 
@@ -62,7 +62,7 @@ const MenuDashboard = () => {
                             className="menu-link"
                         >
                             <i class="menu-icon tf-icons fa fa-power-off"></i>
-                            <div data-i18n="Documentation">Documentation</div>
+                            <div data-i18n="Documentation">Đăng xuất</div>
                         </a>
                     </li>
                 </ul>
@@ -70,4 +70,5 @@ const MenuDashboard = () => {
         </>
     )
 }
-export default MenuDashboard;
+
+export default MenuCategory;

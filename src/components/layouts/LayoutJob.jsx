@@ -171,6 +171,7 @@ const LayoutJob = () => {
                                 onChange={handleSearch}
                             />
                         </div>
+                        <h4 className="fw-bold py-3 mb-2"><span className="text-muted fw-light">Dữ liệu /</span> Thống kê công việc</h4>
                         <div className="card">
                             <div className="card-header">
                                 <div className="d-flex justify-content-between align-items-center">

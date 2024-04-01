@@ -36,7 +36,12 @@ const MenuJob = () => {
                             <div data-i18n="Boxicons">Công việc</div>
                         </a>
                     </li>
-
+                    <li className="menu-item">
+                        <a href="/category" className="menu-link">
+                            <i className="menu-icon tf-icons fa fa-table"></i>
+                            <div data-i18n="Boxicons">Các loại dịch vụ</div>
+                        </a>
+                    </li>
 
                     <li className="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
                     <li className="menu-item">
