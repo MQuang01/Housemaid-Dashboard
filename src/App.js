@@ -4,7 +4,10 @@ import {Suspense} from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import DashboardCustomer from "./components/pages/DasboardUser";
 import DashboardJob from "./components/pages/DashboardJob";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import DashboardCategory from "./components/pages/DashboardCategory";
+
 
 function App() {
   return (
@@ -22,6 +25,7 @@ function App() {
           {/*</AuthProvider>*/}
         </BrowserRouter >
         {/*<ToastContainer />*/}
+        <ToastContainer />
       </>
   );
 }
