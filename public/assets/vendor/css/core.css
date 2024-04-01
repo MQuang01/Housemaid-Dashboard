@@ -2792,11 +2792,12 @@ textarea.form-control-lg {
 
 .btn-link {
   font-weight: 400;
-  color: #696cff;
+  color: #FDF000;
   text-decoration: none;
+  
 }
 .btn-link:hover {
-  color: #5f61e6;
+  color: #FDF000;
 }
 .btn-link:disabled, .btn-link.disabled {
   color: rgba(67, 89, 113, 0.6);
@@ -6332,9 +6333,9 @@ label.btn {
 }
 
 .btn-outline-secondary {
-  color: #8592a3;
-  border-color: #8592a3;
-  background: transparent;
+  color: #000;
+  border-color: #FDF000;
+  background: #FDF000;
 }
 .btn-outline-secondary:hover {
   color: #fff;
@@ -6632,9 +6633,9 @@ label.btn {
   box-shadow: none;
 }
 .btn-check:checked + .btn-danger, .btn-check:active + .btn-danger, .btn-danger:active, .btn-danger.active, .show > .btn-danger.dropdown-toggle {
-  color: #fff;
-  background-color: #d93519;
-  border-color: #d93519;
+  color: #000;
+  background-color: #FDF000;
+  border-color: #FDF000;
 }
 .btn-check:checked + .btn-danger:focus, .btn-check:active + .btn-danger:focus, .btn-danger:active:focus, .btn-danger.active:focus, .show > .btn-danger.dropdown-toggle:focus {
   box-shadow: none;

@@ -32,3 +32,32 @@ export const fetchAddJobFormData = async (frmData) => {
         console.error('Error adding job: ', error);
     }
 }
+
+export const fetchDeleteJob = async (jobId) => {
+    try {
+        const response = await axios.delete(`${InforUrl}/jobs/${jobId}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error deleting job: ', error);
+    }
+}
+
+export const fetchUpdateJob = async (jobId, jobData) => {
+    console.log("jobData",jobData);
+    try {
+        const response = await axios.put(`${InforUrl}/jobs/${jobId}`, jobData);
+        return response.data;
+    } catch (error) {
+        console.error('Error updating job: ', error);
+        throw error; // Ném lỗi để xử lý ở phần gọi API
+    }
+};
+
+export const fetchCategory = async () => {
+    try {
+        const response = await axios.get(`${InforUrl}/categories`);
+        return response.data;
+    } catch (error) {
+        throw new Error(error.response.data)
+    }
+};

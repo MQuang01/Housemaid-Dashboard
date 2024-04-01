@@ -5,6 +5,8 @@ import {Suspense} from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import DashboardCustomer from "./components/pages/DasboardUser";
 import DashboardJob from "./components/pages/DashboardJob";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
       <>
@@ -15,12 +17,14 @@ function App() {
               <Route path='/' element={<Dashboard/>} />
                 <Route path='/customer' element={<DashboardCustomer />} />
                 <Route path='/job' element={<DashboardJob />} />
+               
 
             </Routes>
           </Suspense>
           {/*</AuthProvider>*/}
         </BrowserRouter >
         {/*<ToastContainer />*/}
+        <ToastContainer />
       </>
   );
 }
