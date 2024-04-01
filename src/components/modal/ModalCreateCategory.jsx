@@ -4,6 +4,7 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Modal, ModalBody, ModalHeader, ModalTitle, ModalFooter } from 'react-bootstrap';
 import {  fetchAddCategoryFormData } from "../../service/CategoryService";
+import { toast } from 'react-toastify';
 
 const ModalCreateJob = ({ show, handleClose, onCategoryCreate }) => {
 
@@ -57,8 +58,12 @@ const ModalCreateJob = ({ show, handleClose, onCategoryCreate }) => {
             // Reset form sau khi thêm công việc thành công
             reset();
             setImageUrl(null);
+            toast.success("Thêm mới thành công");
+
         } catch (error) {
             console.error('Error adding job: ', error);
+            toast.error("Thêm mới thất bại");
+
         }
     };
     const { onChange, name, ref,onBlur} = {...register("serviceImage")};
@@ -88,10 +93,10 @@ const ModalCreateJob = ({ show, handleClose, onCategoryCreate }) => {
             </ModalBody>
             <ModalFooter>
                 <Button variant="secondary" onClick={handleClose}>
-                    Close
+                    Đóng
                 </Button>
                 <Button variant="primary" type="submit" onClick={handleSubmit(onSubmit)}>
-                    Save changes
+                    Tạo
                 </Button>
             </ModalFooter>
         </Modal>
