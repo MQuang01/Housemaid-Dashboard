@@ -25,12 +25,13 @@ const LayoutJob = () => {
         // Tìm công việc tương ứng với id được chọn
         const jobToEdit = job.find(job => job.id === jobId);
         // Nếu tồn tại công việc, cập nhật state selectedJob
+
         if (jobToEdit) {
             setSelectedJob(jobToEdit);
             setShowEditModal(true);
         }
     };
-
+    console.log("selectedJob", selectedJob);
     // Hàm xử lý sự kiện nhập từ khóa tìm kiếm
     const handleSearch = (e) => {
         setSearchKeyword(e.target.value);
@@ -45,7 +46,7 @@ const LayoutJob = () => {
         }
     );
 
-
+    console.log("jobbbb", job);
 
     const handleShowConfirmModal = (jobId) => {
         setShowConfirmModal(true);
@@ -66,6 +67,7 @@ const LayoutJob = () => {
             // Gọi lại API để fetch danh sách công việc mới từ cơ sở dữ liệu
             const response = await fetchJobsPaging(dataPage.page);
             // Cập nhật state job với danh sách công việc mới
+            
             setJob(response.content);
         } catch (error) {
             console.error('Error updating job list after creation: ', error);
@@ -87,6 +89,8 @@ const LayoutJob = () => {
     useEffect(() => {
         fetchJobsPaging(dataPage.page).then((data) => {
             setJob(data.content);
+            console.log("data",data.content);
+
             setDataPage(
                 {
                     ...dataPage,
@@ -114,6 +118,7 @@ const LayoutJob = () => {
     const updateJobList = async () => {
         try {
             const response = await fetchJobsPaging(dataPage.page);
+            console.log("response.contentaaaaa",response.content);
             setJob(response.content);
             setDataPage({
                 ...dataPage,
@@ -171,7 +176,6 @@ const LayoutJob = () => {
                                 onChange={handleSearch}
                             />
                         </div>
-                        <h4 className="fw-bold py-3 mb-2"><span className="text-muted fw-light">Dữ liệu /</span> Thống kê công việc</h4>
                         <div className="card">
                             <div className="card-header">
                                 <div className="d-flex justify-content-between align-items-center">
@@ -251,7 +255,7 @@ const LayoutJob = () => {
                                                                 className="btn btn-link p-0 me-2"
                                                                 style={{ fontSize: '18px', padding: '10px', color: '#56DDA1' }}
                                                                 onClick={() => handleShowEditModal(job.id)}
-                                                                title="Chỉnh Sửa" 
+                                                                title="Chỉnh Sửa"
                                                             >
                                                                 <i className="fa fa-edit"></i>
                                                             </button>
@@ -260,7 +264,7 @@ const LayoutJob = () => {
                                                                 className="btn btn-link p-0"
                                                                 style={{ fontSize: '18px', color: '#D65F4E' }}
                                                                 onClick={() => handleShowConfirmModal(job.id)}
-                                                                title="Xóa" 
+                                                                title="Xóa"
                                                             >
                                                                 <i className="fa fa-trash"></i>
                                                             </button>
@@ -290,7 +294,7 @@ const LayoutJob = () => {
                                             <div className="modal-content">
                                                 <div className="modal-header">
                                                     <h5 className="modal-title">Xác nhận xóa công việc</h5>
-                                                    
+
                                                 </div>
                                                 <div className="modal-body">
                                                     Bạn có chắc chắn muốn xóa công việc này?
