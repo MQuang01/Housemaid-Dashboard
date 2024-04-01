@@ -24,12 +24,21 @@ export const fetchAddCategoryFormData = async (frmData) => {
     }
 }
 
-    export const fetchDeleteCategoryById = async (id) => {
-        try {
-            const response = await axios.delete(`${InforUrl}/categories/${id}`);
-            console.log("delete:",id);
-            return response.data;
-        } catch (error) {
-            console.error('Error adding category: ', error);
-        }
+export const fetchDeleteCategoryById = async (id) => {
+    try {
+        const response = await axios.delete(`${InforUrl}/categories/${id}`);
+        console.log("delete:",id);
+        return response.data;
+    } catch (error) {
+        console.error('Error adding category: ', error);
     }
+}
+
+export const getCategoryById = async (id) => {
+    try{
+        const response = await axios.get(`${InforUrl}/categories/${id}`);
+        return response.data;
+    } catch (error){
+        console.error('Error collect data: ', error);
+    }
+}

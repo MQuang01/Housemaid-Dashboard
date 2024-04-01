@@ -3,24 +3,24 @@ import { useForm } from "react-hook-form";
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Modal, ModalBody, ModalHeader, ModalTitle, ModalFooter } from 'react-bootstrap';
-import {  fetchAddCategoryFormData } from "../../service/CategoryService";
-import { toast } from 'react-toastify';
+import {  getCategoryById } from "../../service/CategoryService";
 
-const ModalCreateJob = ({ show, handleClose, onCategoryCreate }) => {
+const ModalUpdateCategory = ({ showUpdate, handleClose, onCategoryUpdate, id }) => {
+
+    const [category, setCategory] = useState([]);
+    useEffect(() => {
+        getCategoryById(id).then((data) => setCategory(data));
+    }, []);
 
     const [imageUrl, setImageUrl] = useState(null);
 
     useEffect(() => {
-
     }, []);
 
     const schema = yup.object().shape({
         serviceName: yup.string().required('Tên dịch vụ không được để trống'),
         serviceImage: yup.mixed().required('Ảnh không được để trống'),
     });
-
-
-
     const { register, handleSubmit, reset,setValue,getValues, formState: { errors } } = useForm({
         resolver: yupResolver(schema)
     });
@@ -50,31 +50,36 @@ const ModalCreateJob = ({ show, handleClose, onCategoryCreate }) => {
                 name: data.serviceName,
                 avatar: fileSelected
             }
-            const response = await fetchAddCategoryFormData(frmData);
-            console.log('Job added:', response);
+            // const response = await fetchAddCategoryFormData(frmData);
+            // console.log('Job added:', response);
             // Gọi hàm callback truyền từ LayoutJob để cập nhật danh sách công việc
-            onCategoryCreate(response);
+            // onCategoryUpdate(response);
             handleClose(); // Đóng modal sau khi thêm công việc thành công
             // Reset form sau khi thêm công việc thành công
             reset();
             setImageUrl(null);
-            toast.success("Thêm mới thành công");
-
         } catch (error) {
             console.error('Error adding job: ', error);
-            toast.error("Thêm mới thất bại");
-
         }
     };
     const { onChange, name, ref,onBlur} = {...register("serviceImage")};
 
     return (
-        <Modal show={show} onHide={handleClose}>
+        <Modal showUpdate={showUpdate} onHide={handleClose}>
             <ModalHeader closeButton>
-                <ModalTitle>Tạo dịch vụ</ModalTitle>
+                <ModalTitle>Sửa dịch vụ</ModalTitle>
             </ModalHeader>
             <ModalBody>
                 <form onSubmit={handleSubmit(onSubmit)}>
+
+                    {/*<h1>{category.name}</h1>*/}
+                    {/*{category.map((object) => (*/}
+                    {/*    <h1>{object.name}</h1>*/}
+
+                    {/*))}*/}
+                    {/*<img src={category.fileInfo.url} height="40px" width="40px" />*/}
+
+
                     <div className="mb-3">
                         <label htmlFor="serviceName" className="form-label">Tên loại dịch vụ:</label>
                         <input type="text" className="form-control" id="serviceName" {...register("serviceName")} />
@@ -96,11 +101,11 @@ const ModalCreateJob = ({ show, handleClose, onCategoryCreate }) => {
                     Đóng
                 </Button>
                 <Button variant="primary" type="submit" onClick={handleSubmit(onSubmit)}>
-                    Tạo
+                    Lưu thay đổi
                 </Button>
             </ModalFooter>
         </Modal>
     );
 };
 
-export default ModalCreateJob;
+export default ModalUpdateCategory;
