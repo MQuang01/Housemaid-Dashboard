@@ -62,3 +62,12 @@ export const fetchCategory = async () => {
     }
 };
 
+export const fetchSortBy = async (value) => {
+    try {
+        // Thêm các tham số sort và order vào URL để sắp xếp theo tên alpha và số từ thấp đến cao
+        const response = await axios.get(`${InforUrl}/jobs?search=${value}&sort=name&sort=number_of_words&order=asc`);
+        return response.data;
+    } catch (error) {
+        throw new Error(error.response.data)
+    }
+}

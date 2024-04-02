@@ -30,27 +30,39 @@ const MenuJob = () => {
                             <div data-i18n="Tables">Khách hàng</div>
                         </a>
                     </li>
-                    <li class="menu-item active">
-                        <a href="/job" class="menu-link">
-                            <i class="menu-icon tf-icons fa fa-table"></i>
-                            <div data-i18n="Boxicons">Công việc</div>
+                    <li className="menu-item active">
+                        <a href="/job" className="menu-link">
+                            <i className="menu-icon tf-icons fa fa-table"></i>
+                            <div data-i18n="Boxicons">Dịch vụ</div>
                         </a>
                     </li>
                     <li className="menu-item">
                         <a href="/category" className="menu-link">
                             <i className="menu-icon tf-icons fa fa-table"></i>
-                            <div data-i18n="Boxicons">Các loại dịch vụ</div>
+                            <div data-i18n="Boxicons">Danh mục</div>
+                        </a>
+                    </li>
+                    <li className="menu-item">
+                        <a href="/order" className="menu-link">
+                            <i className="menu-icon tf-icons fa fa-table"></i>
+                            <div data-i18n="Boxicons">Lịch sử đơn hàng</div>
+                        </a>
+                    </li>
+                    <li className="menu-item ">
+                        <a href="/order" className="menu-link">
+                            <i className="menu-icon tf-icons fa fa-table"></i>
+                            <div data-i18n="Boxicons">Quản lý hóa đơn</div>
                         </a>
                     </li>
 
-                    <li className="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
+                    <li className="menu-header small text-uppercase"><span className="menu-header-text">Misc</span></li>
                     <li className="menu-item">
                         <a
                             href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
                             target="_blank"
                             className="menu-link"
                         >
-                            <i class="menu-icon tf-icons fa fa-gear"></i>
+                            <i className="menu-icon tf-icons fa fa-gear"></i>
                             <div data-i18n="Support">Support</div>
                         </a>
                     </li>
@@ -60,7 +72,7 @@ const MenuJob = () => {
                             target="_blank"
                             className="menu-link"
                         >
-                            <i class="menu-icon tf-icons fa fa-power-off"></i>
+                            <i className="menu-icon tf-icons fa fa-power-off"></i>
                             <div data-i18n="Documentation">Đăng xuất</div>
                         </a>
                     </li>
