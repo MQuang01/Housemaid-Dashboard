@@ -31,7 +31,7 @@ const MenuJob = () => {
                         </a>
                     </li>
                     <li className="menu-item">
-                        <a href="/employee" className="menu-link">
+                        <a href="/employees" className="menu-link">
                             <i className="menu-icon tf-icons fa fa-table"></i>
                             <div data-i18n="Tables">Nhân viên</div>
                         </a>

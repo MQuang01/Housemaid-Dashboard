@@ -40,13 +40,25 @@ const MenuUser = () => {
                     <li class="menu-item">
                         <a href="/job" class="menu-link">
                             <i class="menu-icon tf-icons fa fa-table"></i>
-                            <div data-i18n="Boxicons">Công việc</div>
+                            <div data-i18n="Boxicons">Dịch vụ</div>
                         </a>
                     </li>
                     <li className="menu-item">
                         <a href="/category" className="menu-link">
                             <i className="menu-icon tf-icons fa fa-table"></i>
-                            <div data-i18n="Boxicons">Các loai dịch vụ</div>
+                            <div data-i18n="Boxicons">Danh mục</div>
+                        </a>
+                    </li>
+                    <li className="menu-item">
+                        <a href="/order" className="menu-link">
+                            <i className="menu-icon tf-icons fa fa-table"></i>
+                            <div data-i18n="Boxicons">Lịch sử đơn hàng</div>
+                        </a>
+                    </li>
+                    <li className="menu-item ">
+                        <a href="/order" className="menu-link">
+                            <i className="menu-icon tf-icons fa fa-table"></i>
+                            <div data-i18n="Boxicons">Quản lý hóa đơn</div>
                         </a>
                     </li>
 

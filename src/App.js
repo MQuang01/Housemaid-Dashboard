@@ -8,6 +8,8 @@ import DashboardJob from "./components/pages/DashboardJob";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import DashboardCategory from "./components/pages/DashboardCategory";
+import DashboardHistoryOrder from './components/pages/DashboardHistoryOrder';
+import DashboardOrder from './components/pages/DashboardOrder';
 
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
                 <Route path='/employee' element={<DashboardEmployee />} />
                 <Route path='/job' element={<DashboardJob />} />
                 <Route path='/category' element={<DashboardCategory/>} />
+                <Route path='/history' element={<DashboardHistoryOrder/>} />
+                <Route path='/order' element={<DashboardOrder/>} />
             </Routes>
           </Suspense>
           {/*</AuthProvider>*/}
