@@ -2,11 +2,15 @@ import Nav from "../navbar/Nav";
 import Footer from "../footer/Footer";
 import React, { useState, useEffect } from 'react';
 import Pagination from "../pagination/Pagination";
-import { fetchCustomersPaging } from "../../service/UserService";
+import { fetchCustomersPaging, fetchDeleteCustomer } from "../../service/UserService";
+import { toast } from 'react-toastify';
 
 const LayoutPage = () => {
     const [loading, setLoading] = useState(false);
     const [customer, setCustomer] = useState([]);
+    const [showConfirmModal, setShowConfirmModal] = useState(false);
+    const [userToDeleteId, setUserToDeleteId] = useState(null);
+
     const [dataPage, setDataPage] = useState(
         {
             page: 0,
@@ -14,8 +18,22 @@ const LayoutPage = () => {
         }
     );
     const defaultImageUrl = "https://bom.so/KozLmH"
-        
-    
+
+
+    const handleShowEditModal = (jobId) => {
+        // Tìm công việc tương ứng với id được chọn
+        // const jobToEdit = job.find(job => job.id === jobId);
+        // // Nếu tồn tại công việc, cập nhật state selectedJob
+        // if (jobToEdit) {
+        //     setSelectedJob(jobToEdit);
+        //     setShowEditModal(true);
+        // }
+    };
+
+    const handleShowConfirmModal = (userId) => {
+        setShowConfirmModal(true);
+        setUserToDeleteId(userId);
+    };
 
     function fetchDataPage(newDataPage) {
         setDataPage(newDataPage);
@@ -43,6 +61,36 @@ const LayoutPage = () => {
     //         .then(data => setUsers(data))
     //         .catch(error => console.log(error));
     // }, []);
+
+    const handleDeleteConfirmation = async () => {
+        try {
+            await fetchDeleteCustomer(userToDeleteId); // Gọi hàm xóa công việc từ API
+            updateCustomerList(); // Cập nhật lại danh sách công việc sau khi xóa
+            toast.success("Xóa công việc thành công"); // Hiển thị toast thông báo xóa thành công
+        } catch (error) {
+            console.error('Error deleting job: ', error);
+            toast.error("Xóa công việc thất bại"); // Hiển thị toast thông báo xóa thất bại
+        }
+        setShowConfirmModal(false); // Ẩn modal xác nhận xóa sau khi xử lý xong
+    };
+    const updateCustomerList = async () => {
+        try {
+            const response = await fetchCustomersPaging(dataPage.page);
+            setCustomer(response.content);
+            setDataPage({
+                ...dataPage,
+                totalPage: response.totalPages
+            });
+        } catch (error) {
+            console.error('Error updating customer list: ', error);
+        }
+    };
+    useEffect(() => {
+        updateCustomerList();
+    }, [dataPage.page]);
+    const handleCloseConfirmModal = () => {
+        setShowConfirmModal(false); // Ẩn modal xác nhận xóa nếu người dùng hủy bỏ
+    };
     return (
         <>
             <div className="layout-page">
@@ -88,25 +136,48 @@ const LayoutPage = () => {
                                                 <td>{c.dob}</td>
                                                 <td>{c.gender}</td>
                                                 <td>
-                                                    <div className="dropdown">
-                                                        <button type="button" className="btn p-0 dropdown-toggle hide-arrow"
-                                                            data-bs-toggle="dropdown">
-                                                            <i className="fas fa-ellipsis-v"></i>
+                                                    <div className="d-flex gap-3">
+                                                        <button
+                                                            type="button"
+                                                            className="btn btn-link p-0 me-2"
+                                                            style={{ fontSize: '18px', padding: '10px', color: '#56DDA1' }}
+                                                            onClick={() => handleShowEditModal(c.id)} // Truyền id của công việc vào hàm handleShowEditModal
+                                                        >
+                                                            <i className="fa fa-edit"></i>
                                                         </button>
-                                                        <div className="dropdown-menu">
-                                                            <a className="dropdown-item" href="javascript:void(0);"
-                                                            ><i className="fa fa-edit me-1"></i> Edit</a
-                                                            >
-                                                            <a className="dropdown-item" href="javascript:void(0);"
-                                                            ><i className="fa fa-trash me-1"></i> Delete</a
-                                                            >
-                                                        </div>
+                                                        <button type="button" className="btn btn-link p-0"
+                                                                style={{ fontSize: '18px', color: '#D65F4E' }}
+                                                                onClick={() => handleShowConfirmModal(c.id)}>
+                                                            <i className="fa fa-trash"></i>
+                                                        </button>
                                                     </div>
                                                 </td>
                                             </tr>
                                         ))}
                                     </tbody>
                                 </table>
+
+
+
+                                {showConfirmModal &&
+                                    <div className="modal fade show" tabIndex="-1" role="dialog" style={{ display: 'block', backgroundColor: 'rgba(0,0,0,0.5)' }}>
+                                        <div className="modal-dialog" role="document">
+                                            <div className="modal-content">
+                                                <div className="modal-header">
+                                                    <h5 className="modal-title">Xác nhận xóa công việc</h5>
+
+                                                </div>
+                                                <div className="modal-body">
+                                                    Bạn có chắc chắn muốn xóa công việc này?
+                                                </div>
+                                                <div className="modal-footer">
+                                                    <button type="button" className="btn btn-secondary" onClick={handleCloseConfirmModal}>Hủy bỏ</button>
+                                                    <button type="button" className="btn btn-primary" onClick={handleDeleteConfirmation}>Xác nhận</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
                                 <div className="card-footer d-flex justify-content-center">
                                     <Pagination dataPage={dataPage} setDataPage={fetchDataPage} loading={loading} setLoading={setLoading} />
                                 </div>
