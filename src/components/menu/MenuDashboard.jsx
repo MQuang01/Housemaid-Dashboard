@@ -40,7 +40,19 @@ const MenuDashboard = () => {
                     <li className="menu-item">
                         <a href="/category" className="menu-link">
                             <i className="menu-icon tf-icons fa fa-table"></i>
-                            <div data-i18n="Boxicons">Các loai dịch vụ</div>
+                            <div data-i18n="Boxicons">Danh mục</div>
+                        </a>
+                    </li>
+                    <li className="menu-item">
+                        <a href="/order" className="menu-link">
+                            <i className="menu-icon tf-icons fa fa-table"></i>
+                            <div data-i18n="Boxicons">Lịch sử đơn hàng</div>
+                        </a>
+                    </li>
+                    <li className="menu-item ">
+                        <a href="/order" className="menu-link">
+                            <i className="menu-icon tf-icons fa fa-table"></i>
+                            <div data-i18n="Boxicons">Quản lý hóa đơn</div>
                         </a>
                     </li>
 

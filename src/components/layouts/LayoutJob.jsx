@@ -7,6 +7,7 @@ import ModalCreateJob from "../modal/ModalCreateJob";
 import { fetchAddJob } from "../../service/JobService";
 import { toast } from 'react-toastify';
 import ModalEditJob from "../modal/ModalEditJob";
+import { fetchSortBy } from "../../service/JobService";
 
 
 const LayoutJob = () => {
@@ -20,22 +21,56 @@ const LayoutJob = () => {
     const [searchKeyword, setSearchKeyword] = useState('');
     const [searchResults, setSearchResults] = useState([]);
 
+    const [sortBy, setSortBy] = useState(null); // Cột hiện đang được sắp xếp
+    const [sortDirection, setSortDirection] = useState('asc'); // Hướng sắp xếp: 'asc' hoặc 'desc'
+
+    const handleSort = (column) => {
+        let sortedData;
+        if (column === 'price') {
+            // Sắp xếp theo giá tiền
+            sortedData = [...job];
+            sortedData.sort((a, b) => {
+                if (sortDirection === 'asc') {
+                    return a.price - b.price;
+                } else {
+                    return b.price - a.price;
+                }
+            });
+        } else {
+            // Sắp xếp theo các cột khác
+            sortedData = [...job];
+            sortedData.sort((a, b) => {
+                const valueA = a[column].toLowerCase();
+                const valueB = b[column].toLowerCase();
+                if (sortDirection === 'asc') {
+                    return valueA.localeCompare(valueB);
+                } else {
+                    return valueB.localeCompare(valueA);
+                }
+            });
+        }
+
+        // Cập nhật state với dữ liệu đã sắp xếp
+        setJob(sortedData);
+        setSortBy(column);
+        setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+    };
+
 
     const handleShowEditModal = (jobId) => {
         // Tìm công việc tương ứng với id được chọn
         const jobToEdit = job.find(job => job.id === jobId);
         // Nếu tồn tại công việc, cập nhật state selectedJob
-
         if (jobToEdit) {
             setSelectedJob(jobToEdit);
             setShowEditModal(true);
         }
     };
-    console.log("selectedJob", selectedJob);
     // Hàm xử lý sự kiện nhập từ khóa tìm kiếm
     const handleSearch = (e) => {
         setSearchKeyword(e.target.value);
     };
+
 
 
     const [job, setJob] = useState([]);
@@ -46,7 +81,7 @@ const LayoutJob = () => {
         }
     );
 
-    console.log("jobbbb", job);
+
 
     const handleShowConfirmModal = (jobId) => {
         setShowConfirmModal(true);
@@ -67,7 +102,6 @@ const LayoutJob = () => {
             // Gọi lại API để fetch danh sách công việc mới từ cơ sở dữ liệu
             const response = await fetchJobsPaging(dataPage.page);
             // Cập nhật state job với danh sách công việc mới
-            
             setJob(response.content);
         } catch (error) {
             console.error('Error updating job list after creation: ', error);
@@ -89,8 +123,6 @@ const LayoutJob = () => {
     useEffect(() => {
         fetchJobsPaging(dataPage.page).then((data) => {
             setJob(data.content);
-            console.log("data",data.content);
-
             setDataPage(
                 {
                     ...dataPage,
@@ -117,8 +149,14 @@ const LayoutJob = () => {
     // Hàm cập nhật danh sách công việc sau khi thêm mới hoặc xóa
     const updateJobList = async () => {
         try {
-            const response = await fetchJobsPaging(dataPage.page);
-            console.log("response.contentaaaaa",response.content);
+            let response;
+            if (sortBy === 'price') {
+                // Nếu đang sắp xếp theo giá tiền, gọi fetchSortBy với giá trị của cột hiện tại và hướng sắp xếp
+                response = await fetchSortBy(sortDirection);
+            } else {
+                // Nếu không, gọi fetchJobsPaging để lấy danh sách công việc mặc định
+                response = await fetchJobsPaging(dataPage.page);
+            }
             setJob(response.content);
             setDataPage({
                 ...dataPage,
@@ -128,6 +166,7 @@ const LayoutJob = () => {
             console.error('Error updating job list: ', error);
         }
     };
+
 
     useEffect(() => {
         updateJobList();
@@ -165,7 +204,7 @@ const LayoutJob = () => {
 
                 <div className="content-wrapper">
                     <div className="container-xxl flex-grow-1 container-p-y">
-                        <h4 className="fw-bold py-3 mb-2"><span className="text-muted fw-light">Dữ liệu /</span> Công việc</h4>
+                        <h4 className="fw-bold py-3 mb-2"><span className="text-muted fw-light">Dữ liệu /</span> Quản lý dịch vụ</h4>
 
                         <div className="d-flex justify-content-between align-items-center mb-4">
                             <input
@@ -179,7 +218,7 @@ const LayoutJob = () => {
                         <div className="card">
                             <div className="card-header">
                                 <div className="d-flex justify-content-between align-items-center">
-                                    <button className="btn btn-primary btn-lm" onClick={handleShowCreateModal}>Tạo công việc</button>
+                                    <button className="btn btn-primary btn-lm" onClick={handleShowCreateModal}>Tạo dịch vụ</button>
                                 </div>
                             </div>
                             <div className="table-responsive text-nowrap">
@@ -188,12 +227,18 @@ const LayoutJob = () => {
                                         <tr>
                                             <th>STT</th>
                                             <th>Ảnh</th>
-                                            <th>Tên công việc</th>
-
-                                            <th style={{ textAlign: 'right' }}>Giá tiền</th>
+                                            <th>Tên dịch vụ</th>
+                                            <th style={{ textAlign: 'right' }} onClick={() => handleSort('price')} className={sortBy === 'price' ? 'sorted' : ''}>
+                                                Giá tiền {sortBy === 'price' && sortDirection === 'asc' && <i className="fa fa-caret-up"></i>}
+                                                {sortBy === 'price' && sortDirection === 'desc' && <i className="fa fa-caret-down"></i>}
+                                            </th>
                                             <th style={{ textAlign: 'right' }}>Thời gian ước tính</th>
-                                            <th style={{ textAlign: 'right' }}>Đơn vị</th>
-                                            <th style={{ textAlign: 'right' }}>Loại dịch vụ</th>
+                                            <th style={{ textAlign: 'right' }} onClick={() => handleSort('typeJob')} className={sortBy === 'typeJob' ? 'sorted' : ''}>
+                                                Đơn vị {sortBy === 'typeJob' && sortDirection === 'asc' && <i className="fa fa-caret-up"></i>}
+                                                {sortBy === 'typeJob' && sortDirection === 'desc' && <i className="fa fa-caret-down"></i>}
+                                            </th>
+                                            <th style={{ textAlign: 'right' }}>Danh mục</th>
+
                                             <th>Thao tác</th>
                                         </tr>
                                     </thead>
@@ -210,7 +255,9 @@ const LayoutJob = () => {
                                                         <img src={defaultImageUrl} height="40px" width="40px" />
                                                     )}</td>
                                                     <td><i className="fa-lg text-danger "></i> <strong>{job.name}</strong></td>
-                                                    <td style={{ textAlign: 'right' }}>{job.price.toLocaleString('vi-VN')} VNĐ</td>
+                                                    <td key={job.id} style={{ textAlign: 'right' }}>
+                                                        {job.price.toLocaleString('vi-VN')} VNĐ
+                                                    </td>
                                                     <td style={{ textAlign: 'right' }}>~ {job.timeApprox} phút / đơn vị</td>
                                                     <td style={{ textAlign: 'right' }}>{job.typeJob}</td>
                                                     <td style={{ textAlign: 'right' }}>{job.category.name}</td>
@@ -244,7 +291,9 @@ const LayoutJob = () => {
                                                         <img src={defaultImageUrl} height="40px" width="40px" />
                                                     )}</td>
                                                     <td><i className="fa-lg text-danger "></i> <strong>{job.name}</strong></td>
-                                                    <td style={{ textAlign: 'right' }}>{job.price.toLocaleString('vi-VN')} VNĐ</td>
+                                                    <td key={job.id} style={{ textAlign: 'right' }}>
+                                                        {job.price.toLocaleString('vi-VN')} VNĐ
+                                                    </td>
                                                     <td style={{ textAlign: 'right' }}>~ {job.timeApprox} phút / đơn vị</td>
                                                     <td style={{ textAlign: 'right' }}>{job.typeJob}</td>
                                                     <td style={{ textAlign: 'right' }}>{job.category.name}</td>
