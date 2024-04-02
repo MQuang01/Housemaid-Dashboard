@@ -39,9 +39,14 @@ const LayoutCategory = ({onCategoryCreate, onCategoryUpdate}) => {
 
     const [showUpdate, setShowUpdate] = useState(false);
     const [id, setId] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState(null);
     const handleShowUpdateModal = async (idNumber) => {
-        setShowUpdate(true);
-        setId(idNumber);
+        const categoryToUpdate = categories.find(categories => categories.id === idNumber)
+        if (categoryToUpdate){
+            setSelectedCategory(categoryToUpdate);
+            setShowUpdate(true);
+            console.log(categoryToUpdate)
+        }
     };
     const handleCategoryUpdate = async (newCategory) => {
         try {
@@ -153,7 +158,7 @@ const LayoutCategory = ({onCategoryCreate, onCategoryUpdate}) => {
                                     showUpdate={showUpdate}
                                     handleClose={() => setShowUpdate(false)}
                                     onCategoryUpdate={handleCategoryUpdate}
-                                id={id}
+                                    categoryData={selectedCategory}
                                 />
 
                                 {showConfirmModal &&

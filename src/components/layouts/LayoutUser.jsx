@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Pagination from "../pagination/Pagination";
 import { fetchCustomersPaging, fetchDeleteCustomer } from "../../service/UserService";
 import { toast } from 'react-toastify';
+import ModalCreateCustomer from "../modal/ModalCreateCustomer";
 
 const LayoutPage = () => {
     const [loading, setLoading] = useState(false);
@@ -61,15 +62,30 @@ const LayoutPage = () => {
     //         .then(data => setUsers(data))
     //         .catch(error => console.log(error));
     // }, []);
+    
+    const [show, setShow] = useState(false);
+    const handleShowCreateModal = async () => {
+        setShow(true);
+    }
+    const handleCustomerCreate = async (newJob) => {
+        try {
+            // Gọi lại API để fetch danh sách công việc mới từ cơ sở dữ liệu
+            const response = await fetchCustomersPaging(dataPage.page);
+            // Cập nhật state job với danh sách công việc mới
 
+            setCustomer(response.content);
+        } catch (error) {
+            console.error('Error updating job list after creation: ', error);
+        }
+    };
     const handleDeleteConfirmation = async () => {
         try {
             await fetchDeleteCustomer(userToDeleteId); // Gọi hàm xóa công việc từ API
             updateCustomerList(); // Cập nhật lại danh sách công việc sau khi xóa
-            toast.success("Xóa công việc thành công"); // Hiển thị toast thông báo xóa thành công
+            toast.success("Xóa người dùng thành công"); // Hiển thị toast thông báo xóa thành công
         } catch (error) {
             console.error('Error deleting job: ', error);
-            toast.error("Xóa công việc thất bại"); // Hiển thị toast thông báo xóa thất bại
+            toast.error("Xóa người dùng thất bại"); // Hiển thị toast thông báo xóa thất bại
         }
         setShowConfirmModal(false); // Ẩn modal xác nhận xóa sau khi xử lý xong
     };
@@ -101,7 +117,7 @@ const LayoutPage = () => {
                         <div className="card">
                             <div className="card-header">
                                 <div className="d-flex justify-content-between align-items-center">
-                                    <button className="btn btn-primary btn-lm">Tạo khách hàng</button>
+                                    <button className="btn btn-primary btn-lm" onClick={handleShowCreateModal}>Tạo khách hàng</button>
                                 </div>
                             </div>
 
@@ -157,6 +173,10 @@ const LayoutPage = () => {
                                     </tbody>
                                 </table>
 
+                                <ModalCreateCustomer 
+                                    show={show} 
+                                    handleClose={() => setShow(false)}
+                                    onCustomerCreate={handleCustomerCreate} />
 
 
                                 {showConfirmModal &&

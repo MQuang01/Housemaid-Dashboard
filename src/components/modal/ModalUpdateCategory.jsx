@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Modal, ModalBody, ModalHeader, ModalTitle, ModalFooter } from 'react-bootstrap';
 import {  getCategoryById } from "../../service/CategoryService";
 
-const ModalUpdateCategory = ({ showUpdate, handleClose, onCategoryUpdate, id }) => {
+const ModalUpdateCategory = ({ showUpdate, handleClose, categoryData, id }) => {
 
     const [category, setCategory] = useState([]);
     useEffect(() => {
