@@ -1,11 +1,9 @@
-import Nav from "../navbar/Nav";
 import Footer from "../footer/Footer";
 
 const LayoutPage = () => {
     return (
         <>
             <div className="layout-page">
-            <Nav/>
                 <div className="content-wrapper">
 
 

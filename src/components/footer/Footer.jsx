@@ -9,25 +9,21 @@ const Footer = () => {
                           document.write(new Date().getFullYear());
                       </script>
                       HomeMaid ❤️ by
-                      <a href="https://themeselection.com" target="_blank"
+                      <a href="#" 
                          className="footer-link fw-bolder"> Warrior Team</a>
                   </div>
                   <div>
-                      <a href="https://themeselection.com/license/" className="footer-link me-4"
-                         target="_blank">License</a>
-                      <a href="https://themeselection.com/" target="_blank" className="footer-link me-4">More
+                      <a href="#" className="footer-link me-4"
+                         >License</a>
+                      <a href="/"  className="footer-link me-4">More
                           Themes</a>
-
                       <a
-                          href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                          target="_blank"
+                          href="#"  
                           className="footer-link me-4"
                       >Documentation</a
                       >
-
                       <a
-                          href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-                          target="_blank"
+                          href="#"      
                           className="footer-link me-4"
                       >Support</a
                       >

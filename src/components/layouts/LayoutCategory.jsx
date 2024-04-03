@@ -1,4 +1,3 @@
-import Nav from "../navbar/Nav";
 import Footer from "../footer/Footer";
 import React, { useState, useEffect } from 'react';
 import {fetchCategories,fetchDeleteCategoryById} from "../../service/CategoryService";
@@ -11,7 +10,7 @@ import { toast } from 'react-toastify';
 
 
 
-const LayoutCategory = ({onCategoryCreate, onCategoryUpdate}) => {
+const LayoutCategory = () => {
     // const { register, handleSubmit, reset,setValue,getValues, formState: { errors } } = useForm({
     //     resolver: yupResolver(schema)
     // });
@@ -39,9 +38,14 @@ const LayoutCategory = ({onCategoryCreate, onCategoryUpdate}) => {
 
     const [showUpdate, setShowUpdate] = useState(false);
     const [id, setId] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState(null);
     const handleShowUpdateModal = async (idNumber) => {
-        setShowUpdate(true);
-        setId(idNumber);
+        const categoryToUpdate = categories.find(categories => categories.id === idNumber)
+        if (categoryToUpdate){
+            setSelectedCategory(categoryToUpdate);
+            setShowUpdate(true);
+            console.log("category to update: ",categoryToUpdate)
+        }
     };
     const handleCategoryUpdate = async (newCategory) => {
         try {
@@ -89,7 +93,6 @@ const LayoutCategory = ({onCategoryCreate, onCategoryUpdate}) => {
     return(
         <>
             <div className="layout-page">
-                <Nav />
                 <div className="content-wrapper">
                     <div className="container-xxl flex-grow-1 container-p-y">
                         
@@ -150,10 +153,10 @@ const LayoutCategory = ({onCategoryCreate, onCategoryUpdate}) => {
 
                                 <ModalCreateCategory show={show} handleClose={() => setShow(false)} onCategoryCreate={handleCategoryCreate}/>
                                 <ModalUpdateCategory
-                                    showUpdate={showUpdate}
+                                    show={showUpdate}
                                     handleClose={() => setShowUpdate(false)}
                                     onCategoryUpdate={handleCategoryUpdate}
-                                id={id}
+                                    categoryData={selectedCategory}
                                 />
 
                                 {showConfirmModal &&

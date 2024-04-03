@@ -1,14 +1,15 @@
-import './App.css';
-import Dashboard from "./components/pages/Dashboard";
+import Dashboard from "./screens/Dashboard";
 import {Suspense} from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import DashboardCustomer from "./components/pages/DasboardUser";
-import DashboardJob from "./components/pages/DashboardJob";
+import DashboardCustomer from "./screens/DasboardUser";
+import DashboardEmployee from "./screens/DashboardEmployee";
+import DashboardJob from "./screens/DashboardJob";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import DashboardCategory from "./components/pages/DashboardCategory";
-import DashboardHistoryOrder from './components/pages/DashboardHistoryOrder';
-import DashboardOrder from './components/pages/DashboardOrder';
+import DashboardCategory from "./screens/DashboardCategory";
+import DashboardHistoryOrder from './screens/DashboardHistoryOrder';
+
+import DashboardOrder from "./screens/DashboardOrder";
 
 
 function App() {
@@ -18,12 +19,15 @@ function App() {
           {/*<AuthProvider>*/}
           <Suspense>
             <Routes>
-              <Route path='/' element={<Dashboard/>} />
-                <Route path='/customer' element={<DashboardCustomer />} />
-                <Route path='/job' element={<DashboardJob />} />
-                <Route path='/category' element={<DashboardCategory/>} />
-                <Route path='/history' element={<DashboardHistoryOrder/>} />
-                <Route path='/order' element={<DashboardOrder/>} />
+              <Route path='/manager' >
+                <Route path="" element={<Dashboard/>} />
+                <Route path='customers' element={<DashboardCustomer />} />
+                <Route path='employee' element={<DashboardEmployee />} />
+                <Route path='jobs' element={<DashboardJob />} />
+                <Route path='categories' element={<DashboardCategory/>} />
+                <Route path='historys' element={<DashboardHistoryOrder/>} />
+                <Route path='orders' element={<DashboardOrder />} />
+              </Route>
             </Routes>
           </Suspense>
           {/*</AuthProvider>*/}

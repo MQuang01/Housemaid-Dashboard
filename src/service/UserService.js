@@ -12,16 +12,16 @@ export const fetchCustomersPaging = async (page) => {
 
 export const fetchAddCustomerFormData = async (frmData) => {
     try {
-        const response = await axios.post(`${InforUrl}/dash-boards/customers`, frmData, {
-
+        // const accessToken = localStorage.getItem('access_token');
+        const response = await axios.post(`${InforUrl}/auths/register`, frmData, {
             headers: {
-                'Content-Type': 'multipart/form-data' // Đặt kiểu dữ liệu content-type là 'multipart/form-data'
+                'Content-Type': 'multipart/form-data'
+                // 'Authorization': 'Bearer ' +
             }
         });
-        console.log("frmData",frmData);
         return response.data;
     } catch (error) {
-        console.error('Error adding customer: ', error);
+        throw new Error(error.response.data); // Ném ra một Error với thông báo lỗi từ máy chủ
     }
 }
 

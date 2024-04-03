@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 const ModalCreateJob = ({ show, handleClose, onCategoryCreate }) => {
 
     const [imageUrl, setImageUrl] = useState(null);
+    const [imageLink, setImageLink] = useState(''); // Thêm trường dữ liệu để lưu trữ link ảnh được chọn
 
     useEffect(() => {
 
@@ -16,7 +17,7 @@ const ModalCreateJob = ({ show, handleClose, onCategoryCreate }) => {
 
     const schema = yup.object().shape({
         serviceName: yup.string().required('Tên dịch vụ không được để trống'),
-        serviceImage: yup.mixed().required('Ảnh không được để trống'),
+        serviceImage: yup.array().typeError('Ảnh không được để trống').of(yup.mixed()),
     });
 
 
@@ -31,6 +32,7 @@ const ModalCreateJob = ({ show, handleClose, onCategoryCreate }) => {
             setValue("serviceImage", [file]);
             const imageUrl = URL.createObjectURL(file);
             setImageUrl(imageUrl);
+            setImageLink(imageUrl); // Cập nhật trường dữ liệu imageLink
         }
     };
 
@@ -41,7 +43,11 @@ const ModalCreateJob = ({ show, handleClose, onCategoryCreate }) => {
             return;
         }
     }
-
+    const onClose = async () => {
+        // Reset form sau khi thêm công việc thành công
+        reset();
+        handleClose(); // Đóng modal sau khi thêm công việc thành công
+    }
     const onSubmit = async (data) => {
         console.log("data",data);
         try {
@@ -58,6 +64,7 @@ const ModalCreateJob = ({ show, handleClose, onCategoryCreate }) => {
             // Reset form sau khi thêm công việc thành công
             reset();
             setImageUrl(null);
+            setImageLink('');
             toast.success("Thêm mới thành công");
 
         } catch (error) {
@@ -69,7 +76,7 @@ const ModalCreateJob = ({ show, handleClose, onCategoryCreate }) => {
     const { onChange, name, ref,onBlur} = {...register("serviceImage")};
 
     return (
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={show} onHide={onClose}>
             <ModalHeader closeButton>
                 <ModalTitle>Tạo dịch vụ</ModalTitle>
             </ModalHeader>
@@ -83,8 +90,30 @@ const ModalCreateJob = ({ show, handleClose, onCategoryCreate }) => {
 
                     <div className="mb-3">
                         <label htmlFor="serviceImage" className="form-label">Chọn ảnh:</label>
-                        <input type="file" className="form-control" id="serviceImage" name={name} ref = {ref} accept="image/*" {...register("serviceImage")}
-                               onChange={handleImageChange}  onBlur={handleImageChangeOnBlur}/>
+
+                        <div className="input-group gap-1">
+                            <label className="input-group-btn">
+                                    <span className="btn btn-primary">
+                                        Tải ảnh<input
+                                        type="file"
+                                        style={{ display: "none" }}
+                                        id="fileInput"
+                                        name={name}
+                                        ref={ref}
+                                        accept="image/*"
+                                        onChange={handleImageChange}
+                                    />
+                                    </span>
+                            </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="imageLink"
+                                value={imageLink}
+                                readOnly
+                            />
+
+                        </div>
                         {errors.serviceImage && <span className="text-danger">{errors.serviceImage.message}</span>}
                     </div>
                     {imageUrl && <img src={imageUrl} alt="Preview" className="img-fluid mb-3 modal-image" style={{ width: '120px', height: '120px' }} />}
@@ -92,7 +121,7 @@ const ModalCreateJob = ({ show, handleClose, onCategoryCreate }) => {
                 </form>
             </ModalBody>
             <ModalFooter>
-                <Button variant="secondary" onClick={handleClose}>
+                <Button variant="secondary" onClick={onClose}>
                     Đóng
                 </Button>
                 <Button variant="primary" type="submit" onClick={handleSubmit(onSubmit)}>

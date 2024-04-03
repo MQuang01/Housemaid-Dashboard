@@ -3,34 +3,47 @@ import { useForm } from "react-hook-form";
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Modal, ModalBody, ModalHeader, ModalTitle, ModalFooter } from 'react-bootstrap';
-import {  getCategoryById } from "../../service/CategoryService";
+import {  fetchUpdateCategory } from "../../service/CategoryService";
+import { toast } from 'react-toastify';
 
-const ModalUpdateCategory = ({ showUpdate, handleClose, onCategoryUpdate, id }) => {
+const ModalUpdateCategory = ({ show, handleClose, categoryData, onCategoryUpdate }) => {
 
     const [category, setCategory] = useState([]);
-    useEffect(() => {
-        getCategoryById(id).then((data) => setCategory(data));
-    }, []);
-
-    const [imageUrl, setImageUrl] = useState(null);
-
-    useEffect(() => {
-    }, []);
+    const [imageUrl, setImageUrl] = useState('');
 
     const schema = yup.object().shape({
-        serviceName: yup.string().required('Tên dịch vụ không được để trống'),
-        serviceImage: yup.mixed().required('Ảnh không được để trống'),
+        name: yup.string().required('Tên dịch vụ không được để trống'),
+        // serviceImage: yup.mixed().required('Ảnh không được để trống'),
     });
     const { register, handleSubmit, reset,setValue,getValues, formState: { errors } } = useForm({
         resolver: yupResolver(schema)
     });
 
+
+    useEffect(() => {
+        if (show) {
+            if (categoryData) {
+                setValue("name", categoryData.name);
+
+                setImageUrl(categoryData.urlImage);
+            }
+        }
+    }, [show, categoryData, setValue]);
+    
     const handleImageChange = (event) => {
+        // const file = event.target.files[0];
+        // if (file) {
+        //     setValue("serviceImage", [file]);
+        //     const imageUrl = URL.createObjectURL(file);
+        //     setImageUrl(imageUrl);
+        // }
         const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setImageUrl(reader.result);
+        };
         if (file) {
-            setValue("serviceImage", [file]);
-            const imageUrl = URL.createObjectURL(file);
-            setImageUrl(imageUrl);
+            reader.readAsDataURL(file);
         }
     };
 
@@ -43,56 +56,92 @@ const ModalUpdateCategory = ({ showUpdate, handleClose, onCategoryUpdate, id }) 
     }
 
     const onSubmit = async (data) => {
+        // console.log("data",data);
+        // try {
+        //     let fileSelected = getValues().serviceImage[0];
+        //     let frmData = {
+        //         name: data.serviceName,
+        //         avatar: fileSelected
+        //     }
+        //     const response = await fetchUpdateCategory(frmData);
+        //     // console.log('Job added:', response);
+        //     // Gọi hàm callback truyền từ LayoutJob để cập nhật danh sách công việc
+        //     // onCategoryUpdate(response);
+        //     handleClose(); // Đóng modal sau khi thêm công việc thành công
+        //     // Reset form sau khi thêm công việc thành công
+        //     reset();
+        //     setImageUrl(null);
+        // } catch (error) {
+        //     console.error('Error adding job: ', error);
+        // }
         console.log("data",data);
+
+        data = {
+            ...data,
+            // urlImage: imageUrl
+        };
         try {
-            let fileSelected = getValues().serviceImage[0];
-            let frmData = {
-                name: data.serviceName,
-                avatar: fileSelected
+            console.log("vao update")
+            const updatedCategory = await fetchUpdateCategory(categoryData.id, data);
+            if (updatedCategory) {
+                onCategoryUpdate(updatedCategory);
+                handleClose();
+                toast.success("Cập nhật  thành công");
+            } else {
+                toast.error("Cập nhật thất bại: Không nhận được dữ liệu cập nhật từ máy chủ");
             }
-            // const response = await fetchAddCategoryFormData(frmData);
-            // console.log('Job added:', response);
-            // Gọi hàm callback truyền từ LayoutJob để cập nhật danh sách công việc
-            // onCategoryUpdate(response);
-            handleClose(); // Đóng modal sau khi thêm công việc thành công
-            // Reset form sau khi thêm công việc thành công
-            reset();
-            setImageUrl(null);
         } catch (error) {
-            console.error('Error adding job: ', error);
+            console.error('Error updating job: ', error);
+            toast.error("Cập nhật thất bại: " + error.message);
         }
     };
-    const { onChange, name, ref,onBlur} = {...register("serviceImage")};
+    // const { onChange, name, ref,onBlur} = {...register("serviceImage")};
 
     return (
-        <Modal showUpdate={showUpdate} onHide={handleClose}>
+        <Modal show={show} onHide={handleClose}>
             <ModalHeader closeButton>
                 <ModalTitle>Sửa dịch vụ</ModalTitle>
             </ModalHeader>
             <ModalBody>
                 <form onSubmit={handleSubmit(onSubmit)}>
-
-                    {/*<h1>{category.name}</h1>*/}
-                    {/*{category.map((object) => (*/}
-                    {/*    <h1>{object.name}</h1>*/}
-
-                    {/*))}*/}
-                    {/*<img src={category.fileInfo.url} height="40px" width="40px" />*/}
-
-
+                    
                     <div className="mb-3">
-                        <label htmlFor="serviceName" className="form-label">Tên loại dịch vụ:</label>
-                        <input type="text" className="form-control" id="serviceName" {...register("serviceName")} />
-                        {errors.serviceName && <span className="text-danger">{errors.serviceName.message}</span>}
+                        <label htmlFor="name" className="form-label">Tên loại dịch vụ:</label>
+                        <input type="text" className="form-control" id="name" {...register("name")} />
+                        {errors.name && <span className="text-danger">{errors.name.message}</span>}
                     </div>
 
-                    <div className="mb-3">
-                        <label htmlFor="serviceImage" className="form-label">Chọn ảnh:</label>
-                        <input type="file" className="form-control" id="serviceImage" name={name} ref = {ref} accept="image/*" {...register("serviceImage")}
-                               onChange={handleImageChange}  onBlur={handleImageChangeOnBlur}/>
-                        {errors.serviceImage && <span className="text-danger">{errors.serviceImage.message}</span>}
+                    {/*<div className="mb-3">*/}
+                    {/*    <label htmlFor="serviceImage" className="form-label">Chọn ảnh:</label>*/}
+                    {/*    <input type="file" className="form-control" id="serviceImage" {...register("serviceImage")}*/}
+                    {/*           onChange={handleImageChange}  />*/}
+                    {/*    {errors.serviceImage && <span className="text-danger">{errors.serviceImage.message}</span>}*/}
+                    {/*</div>*/}
+                    {/*{imageUrl && <img src={imageUrl} alt="Preview" className="img-fluid mb-3 modal-image" style={{ width: '120px', height: '120px' }} />}*/}
+                    <div className="col-md-12">
+                        <label htmlFor="urlImage" className="form-label">Hình ảnh</label>
+                        <div className="input-group gap-1">
+                            <label className="input-group-btn">
+                                    <span className="btn btn-primary">
+                                        Đổi ảnh
+                                        <input
+                                            type="file"
+                                            style={{ display: "none" }}
+                                            id="fileInput"
+                                            onChange={handleImageChange}
+                                        />
+                                    </span>
+                            </label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="imageLink"
+                                readOnly
+                                value={imageUrl}
+                            />
+
+                        </div>
                     </div>
-                    {imageUrl && <img src={imageUrl} alt="Preview" className="img-fluid mb-3 modal-image" style={{ width: '120px', height: '120px' }} />}
 
                 </form>
             </ModalBody>
