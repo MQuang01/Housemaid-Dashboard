@@ -1,4 +1,4 @@
-import LayoutManagerOrder from "../components/layouts/LayoutManagerOrder";
+import LayoutHistoryOrder from "../components/layouts/LayoutHistoryOrder";
 import Menu from "../components/menu/Menu";
 
 function DashboardHistoryOrder() {
@@ -6,8 +6,8 @@ function DashboardHistoryOrder() {
         <div className="App">
             <div className="layout-wrapper layout-content-navbar">
                 <div className="layout-container">
-                    <Menu active={"historyDashboard"}/>
-                    <LayoutManagerOrder />
+                    <Menu active={"histories-order"}/>
+                    <LayoutHistoryOrder />
                 </div>
             </div>
         </div>

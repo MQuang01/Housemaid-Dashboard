@@ -911,20 +911,20 @@ html:not(.layout-menu-collapsed) .bg-menu-theme .menu-inner .menu-item .menu-lin
 }
 
 .bg-menu-theme .menu-inner .menu-sub>.menu-item.active .menu-icon {
-  color: #FDF000;
+  color: #696cff;
 }
 
 .bg-menu-theme .menu-inner>.menu-item.active>.menu-link {
-  color: #FDF000;
-  background-color: #b4bdc6 !important;
+  color: #696cff;
+  background-color: rgba(105, 108, 255, .16) !important;
 }
 
 .bg-menu-theme .menu-inner>.menu-item.active:before {
-  background: #FDF000;
+  background: #fff;
 }
 
 .bg-menu-theme .menu-sub>.menu-item>.menu-link:before {
-  background-color: #b4bdc6 !important;
+  background-color: rgba(105, 108, 255, .16) !important;
 }
 
 .bg-menu-theme .menu-sub>.menu-item.active>.menu-link:not(.menu-toggle):before {

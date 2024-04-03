@@ -7,7 +7,7 @@ import ModelDetailOrder from "../modal/ModelDetailOrder";
 import { formatMoney } from "../../until/FormatMoney";
 import Pagination from "../pagination/Pagination";
 
-const LayoutManagerOrder = () => {
+const LayoutHistoryOrder = () => {
   const [loading, setLoading] = useState(false);
   const [dataOrders, setDataOrders] = useState([]);
   const [showDetaiOrderModal, setShowDetaiOrderModal] = useState(false);
@@ -35,7 +35,6 @@ const LayoutManagerOrder = () => {
     }
   };
   
-
   //Show detail order by id
   const handleShowDetailOrderClick = (id) => {
     // Tìm đơn hàng với id tương ứng
@@ -48,11 +47,10 @@ const LayoutManagerOrder = () => {
   };
 
   const fetchData = async () => {
-    setLoading(true);
     try {
       const data = await fetchDataOrder();
       const filteredOrdersStatusWaiting = data?.content.filter(
-        (item) => item.status === "WAITING"
+        (item) => item.status !== "WAITING"
       );
       setDataOrders(filteredOrdersStatusWaiting);
     } catch (error) {
@@ -62,6 +60,7 @@ const LayoutManagerOrder = () => {
     }
   };
   useEffect(() => {
+    setLoading(true);
     fetchData();
   }, []);
 
@@ -73,7 +72,7 @@ const LayoutManagerOrder = () => {
     page: 0,
     totalPage: 0,
   });
-  const pageSize = 10; // Kích thước của mỗi trang
+  const pageSize = 1; // Kích thước của mỗi trang
 
   const toggleSortOrder = () => {
     setSortOrder(sortOrder === "asc" ? "desc" : "asc");
@@ -128,7 +127,7 @@ const LayoutManagerOrder = () => {
         <div className="content-wrapper">
           <div className="container-xxl flex-grow-1 container-p-y">
             <h4 className="fw-bold py-3 mb-2">
-              <span className="text-muted fw-light">Dữ liệu /</span> Hóa đơn
+              <span className="text-muted fw-light">Dữ liệu /</span>Lịch sử hóa đơn
             </h4>
 
             <div className="d-flex justify-content-between align-items-center mb-4">
@@ -233,10 +232,11 @@ const LayoutManagerOrder = () => {
                           {item.workDay} : {item.timeStart} giờ
                         </td>
                         <td>
-                          {item.status === "WAITING" ? "Đang chờ xử lý" : ""}
+                            {item.status === "PROCESS" && "Đã xác nhận"}
+                            {item.status === "COMPLETE" && "Đã hoàn thành"}
+                            {item.status === "CANCEL" && "Đã hủy"}
                         </td>
                         <td>
-                          <div className="">
                             <button
                               onClick={() =>
                                 handleShowDetailOrderClick(item.id)
@@ -246,40 +246,26 @@ const LayoutManagerOrder = () => {
                             >
                               <i className={"fa-solid fa-eye"}></i>
                             </button>
-                            <button
-                              variant="outline-success"
-                              onClick={() => {
-                                const isConfirmed = window.confirm(
-                                  "Bạn muốn chấp nhận đơn hàng có mã: " +
-                                    item.currentlyCode +
-                                    " này?"
-                                );
-                                if (isConfirmed) {
-                                  handleUpdateStatusOrder(item.id, "PROCESS");
-                                }
-                              }}
-                              className="btn btn-outline-success me-2"
-                              title="Chấp nhận đơn hàng"
-                            >
-                              <i className={"fa-solid fa-check"}></i>
-                            </button>
-                            <button
-                              onClick={() => {
-                                const isConfirmed = window.confirm(
-                                  "Bạn muốn hủy đơn hàng có mã: " +
-                                    item.currentlyCode +
-                                    " này?"
-                                );
-                                if (isConfirmed) {
-                                  handleUpdateStatusOrder(item.id, "CANCEL");
-                                }
-                              }}
-                              className="btn btn-outline-danger me-2"
-                              title="Hủy bỏ đơn hàng"
-                            >
-                              <i className={"fa-solid fa-xmark"}></i>
-                            </button>
-                          </div>
+                            {(item.status === "PROCESS" || item.status === "CANCEL") && (
+                                <button
+                                    variant="outline-success"
+                                    onClick={() => {
+                                        const isConfirmed = window.confirm(
+                                        "Bạn muốn reset lại đơn hàng có mã: " +
+                                            item.currentlyCode +
+                                            " này không?"
+                                        );
+                                        if (isConfirmed) {
+                                        handleUpdateStatusOrder(item.id, "WAITING");
+                                        }
+                                    }}
+                                    className="btn btn-outline-warning me-2"
+                                    title="Reset hóa đơn"
+                                    >
+                                    <i className="fa-solid fa-arrows-rotate"></i>
+                                </button>  
+                            )}
+                                 
                         </td>
                       </tr>
                     ))}
@@ -296,6 +282,7 @@ const LayoutManagerOrder = () => {
                 <ModelDetailOrder
                   show={showDetaiOrderModal}
                   data={orderDetail}
+                  isReset={"reset"}
                   handleClose={() => setShowDetaiOrderModal(false)}
                   handleUpdateStatusOrder={handleUpdateStatusOrder}
                 />
@@ -309,4 +296,4 @@ const LayoutManagerOrder = () => {
     </>
   );
 };
-export default LayoutManagerOrder;
+export default LayoutHistoryOrder;
