@@ -1,7 +1,6 @@
 
-
-import MenuEmployees from "../menu/MenuEmployees";
-import LayoutEmployee from "../layouts/LayoutEmployee";
+import LayoutEmployee from "../components/layouts/LayoutEmployee";
+import Menu from "../components/menu/Menu";
 
 
 function DashboardEmployee() {
@@ -9,7 +8,7 @@ function DashboardEmployee() {
         <div className="App">
             <div className="layout-wrapper layout-content-navbar">
                 <div className="layout-container">
-                    <MenuEmployees/>
+                    <Menu active={"employee"}/>
                     <LayoutEmployee/>
                 </div>
             </div>

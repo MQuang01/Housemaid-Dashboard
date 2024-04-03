@@ -1,5 +1,5 @@
-import MenuDashboard from "../menu/MenuDashboard";
-import LayoutPage from "../layouts/LayoutPage";
+import LayoutPage from "../components/layouts/LayoutPage";
+import Menu from "../components/menu/Menu";
 
 
 function Dashboard() {
@@ -7,7 +7,7 @@ function Dashboard() {
         <div className="App">
             <div className="layout-wrapper layout-content-navbar">
                 <div className="layout-container">
-                <MenuDashboard/>
+                    <Menu active={"dashboard"}/>
                     <LayoutPage/>
                 </div>
             </div>

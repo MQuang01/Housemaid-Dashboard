@@ -1,4 +1,3 @@
-import Nav from "../navbar/Nav";
 import Footer from "../footer/Footer";
 import React, { useState, useEffect } from 'react';
 import Pagination from "../pagination/Pagination";
@@ -125,7 +124,6 @@ const LayoutPage = () => {
     return (
         <>
             <div className="layout-page">
-                <Nav />
                 <div className="content-wrapper">
                     <div className="container-xxl flex-grow-1 container-p-y">
                         <h4 className="fw-bold py-3 mb-2"><span className="text-muted fw-light">Dữ liệu /</span> Thống kê khách hàng</h4>
