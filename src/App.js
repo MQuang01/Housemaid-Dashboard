@@ -19,13 +19,13 @@ function App() {
           {/*<AuthProvider>*/}
           <Suspense>
             <Routes>
-              <Route path='/manager' >
+              <Route path='/dashboard' >
                 <Route path="" element={<Dashboard/>} />
                 <Route path='customers' element={<DashboardCustomer />} />
                 <Route path='employee' element={<DashboardEmployee />} />
                 <Route path='jobs' element={<DashboardJob />} />
                 <Route path='categories' element={<DashboardCategory/>} />
-                <Route path='historys' element={<DashboardHistoryOrder/>} />
+                <Route path='histories-order' element={<DashboardHistoryOrder/>} />
                 <Route path='orders' element={<DashboardOrder />} />
               </Route>
             </Routes>
