@@ -1,4 +1,3 @@
-import Nav from "../navbar/Nav";
 import Footer from "../footer/Footer";
 import React, { useState, useEffect } from 'react';
 import Pagination from "../pagination/Pagination";
@@ -266,13 +265,13 @@ const LayoutJob = () => {
                                                             <button
                                                                 type="button"
                                                                 className="btn btn-link p-0 me-2"
-                                                                style={{ fontSize: '18px', padding: '10px', color: '#56DDA1' }}
+                                                                style={{ fontSize: '18px', padding: '10px', color: '#56DDA1',borderColor: '56DDA1',width: ' 30px' }}
                                                                 onClick={() => handleShowEditModal(job.id)} // Truyền id của công việc vào hàm handleShowEditModal
                                                             >
                                                                 <i className="fa fa-edit"></i>
                                                             </button>
                                                             <button type="button" className="btn btn-link p-0"
-                                                                style={{ fontSize: '18px', color: '#D65F4E' }}
+                                                                style={{ fontSize: '18px', color: '#D65F4E', borderColor: '#D65F4E',width: ' 30px' }}
                                                                 onClick={() => handleShowConfirmModal(job.id)}>
                                                                 <i className="fa fa-trash"></i>
                                                             </button>
@@ -302,7 +301,7 @@ const LayoutJob = () => {
                                                             <button
                                                                 type="button"
                                                                 className="btn btn-link p-0 me-2"
-                                                                style={{ fontSize: '18px', padding: '10px', color: '#56DDA1' }}
+                                                                style={{ fontSize: '18px', padding: '10px', color: '#56DDA1', borderColor: '#56DDA1',width: ' 30px' }}
                                                                 onClick={() => handleShowEditModal(job.id)}
                                                                 title="Chỉnh Sửa"
                                                             >
@@ -311,7 +310,7 @@ const LayoutJob = () => {
                                                             <button
                                                                 type="button"
                                                                 className="btn btn-link p-0"
-                                                                style={{ fontSize: '18px', color: '#D65F4E' }}
+                                                                style={{ fontSize: '18px', color: '#D65F4E', borderColor: '#D65F4E',width: ' 30px' }}
                                                                 onClick={() => handleShowConfirmModal(job.id)}
                                                                 title="Xóa"
                                                             >
