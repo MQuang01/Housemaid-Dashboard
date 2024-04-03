@@ -34,11 +34,14 @@ export const fetchDeleteCategoryById = async (id) => {
     }
 }
 
-export const getCategoryById = async (id) => {
-    try{
-        const response = await axios.get(`${InforUrl}/categories/${id}`);
+
+export const fetchUpdateCategory = async (categoryId, categoryData) => {
+    console.log("du lieu call API",categoryData);
+    try {
+        const response = await axios.put(`${InforUrl}/categories/${categoryId}`, categoryData);
         return response.data;
-    } catch (error){
-        console.error('Error collect data: ', error);
+    } catch (error) {
+        console.error('Error updating job: ', error);
+        throw error; // Ném lỗi để xử lý ở phần gọi API
     }
-}
+};

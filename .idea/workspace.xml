@@ -5,24 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51efc443-fda5-45b7-895f-4cbb3e37478a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/layouts/LayoutEmployee.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/menu/MenuEmployees.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modal/ModalCreateCustomer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modal/ModalCreateEmployee.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modal/ModalEditEmployee.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pages/DashboardEmployee.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/service/EmployeeService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/layouts/LayoutCategory.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/LayoutCategory.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layouts/LayoutUser.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/LayoutUser.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/menu/MenuCategory.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu/MenuCategory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/menu/MenuDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu/MenuDashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/menu/MenuJob.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu/MenuJob.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/menu/MenuUser.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu/MenuUser.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modal/ModalCreateCategory.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/ModalCreateCategory.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modal/ModalEditEmployee.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/ModalEditEmployee.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/modal/ModalUpdateCategory.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modal/ModalUpdateCategory.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/UserService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/UserService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/CategoryService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/CategoryService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/EmployeeService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/EmployeeService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/until/InforUrl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/until/InforUrl.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +118,8 @@
       <workItem from="1711933410713" duration="11491000" />
       <workItem from="1711953773467" duration="13376000" />
       <workItem from="1712020060458" duration="13629000" />
-      <workItem from="1712040184222" duration="2767000" />
+      <workItem from="1712040184222" duration="11208000" />
+      <workItem from="1712070482226" duration="2078000" />
     </task>
     <servers />
   </component>
