@@ -82,10 +82,9 @@ const ModalCreateJob = ({ show, handleClose, onJobCreate }) => {
                 typeJob: data.unit,
                 avatar: fileSelected
             }
+  
             const response = await fetchAddJobFormData(frmData);
-            console.log('Job added:', response);
             // Gọi hàm callback truyền từ LayoutJob để cập nhật danh sách công việc
-            onJobCreate(response);
             handleClose(); // Đóng modal sau khi thêm công việc thành công
             // Reset form sau khi thêm công việc thành công
             reset();
@@ -163,8 +162,8 @@ const ModalCreateJob = ({ show, handleClose, onJobCreate }) => {
                                 <label htmlFor="unit" className="form-label">Đơn vị:</label>
                                 <select className="form-select" id="unit" {...register("unit")}>
                                     <option value="">Chọn đơn vị</option>
-                                    <option value={'JOB_QUANTITY'}>Số lượng</option>
-                                    <option value={'JOB_SIZE'}>Kích thước</option>
+                                    <option value={'Quantity'}>Số lượng</option>
+                                    <option value={'Size'}>Kích thước</option>
 
                                 </select>
                                 {errors.unit && <span className="text-danger">{errors.unit.message}</span>}
@@ -172,7 +171,7 @@ const ModalCreateJob = ({ show, handleClose, onJobCreate }) => {
                             <div className="col-md-6">
                                 <label htmlFor="category" className="form-label">Loại dịch vụ:</label>
                                 <select className="form-select" id="category" {...register("category")}>
-                                    <option value="">Chọn loại dịch vụ</option>
+                                    <option value="">Danh mục</option>
                                     {/* Lặp qua danh sách loại dịch vụ từ API và render các option */}
                                     {categories.map(category => (
                                         <option key={category.id} value={category.id} selected={getValues("category") === category.id}>
