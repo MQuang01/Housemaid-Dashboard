@@ -9,7 +9,7 @@ const LayoutManagerOrder = () => {
     const [loading, setLoading] = useState(false);
     const [dataOrders, setDataOrders] = useState([]);
     const [showDetaiOrderModal, setShowDetaiOrderModal] = useState(false);
-    const [orderDetail, setOrderDetail] = useState(dataOrders[0])
+    const [orderDetail, setOrderDetail] = useState(null)
 
 
     //Update status Process or Cancel
@@ -85,39 +85,38 @@ const LayoutManagerOrder = () => {
                                         </tr>
                                     </thead>
                                     <tbody className="table-border-bottom-0 ">
-                                        {dataOrders.map((item, index) => (
-                                            <tr key={item.id}>
-                                                <td>{index + 1}</td>
-                                                <td>{item.currentlyCode}</td>
-                                                <td>{item.address}</td>
-                                                <td>{item.totalPrice}</td>
-                                                <td>{item.workDay} : {item.timeStart} giờ</td>
-                                                <td>{item.status}</td>
-                                                <td>
-                                                    <div className="">
-                                                        
-                                                        <button 
-                                                            onClick={() => handleShowDetailOrderClick(item.id)}
-                                                            className="fa-solid fa-eye text-info" title="Xem chi tiết hóa đơn"></button>
-                                                        <button
-                                                            variant="outline-success"
-                                                            onClick={() => {
-                                                                const isConfirmed = window.confirm("Bạn muốn chấp nhận đơn hàng có mã: " + item.currentlyCode + " này?");
-                                                                if (isConfirmed) {
-                                                                    handleUpdateStatusOrder(item.id, "PROCESS")
+                                    {dataOrders.filter((item) => item.status === "WAITING").map((item, index) => (
+                                        <tr key={item.id}>
+                                            <td>{index + 1}</td>
+                                            <td>{item.currentlyCode}</td>
+                                            <td>{item.address}</td>
+                                            <td>{item.totalPrice}</td>
+                                            <td>{item.workDay} : {item.timeStart} giờ</td>
+                                            <td>{item.status === "WAITING" ? "Đang chờ xử lý" : ""}</td>
+                                            <td>
+                                                <div className="">
+                                                    <button 
+                                                        onClick={() => handleShowDetailOrderClick(item.id)}
+                                                        className="fa-solid fa-eye text-info" title="Xem chi tiết hóa đơn"></button>
+                                                    <button
+                                                        variant="outline-success"
+                                                        onClick={() => {
+                                                            const isConfirmed = window.confirm("Bạn muốn chấp nhận đơn hàng có mã: " + item.currentlyCode + " này?");
+                                                            if (isConfirmed) {
+                                                                handleUpdateStatusOrder(item.id, "PROCESS")
+                                                        }}}
+                                                        className="fa-solid fa-check text-success" title="Chấp nhận đơn hàng"></button>
+                                                    <button
+                                                        onClick={() => {
+                                                            const isConfirmed = window.confirm("Bạn muốn hủy đơn hàng có mã: " + item.currentlyCode + " này?");
+                                                            if (isConfirmed) {
+                                                                handleUpdateStatusOrder(item.id, "CANCEL")
                                                             }}}
-                                                            className="fa-solid fa-check text-success" title="Chấp nhận đơn hàng"></button>
-                                                        <button
-                                                            onClick={() => {
-                                                                const isConfirmed = window.confirm("Bạn muốn hủy đơn hàng có mã: " + item.currentlyCode + " này?");
-                                                                if (isConfirmed) {
-                                                                    handleUpdateStatusOrder(item.id, "CANCEL")
-                                                                }}}
-                                                            className="fa-solid fa-xmark text-danger" title="Hủy bỏ đơn hàng"></button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        ))}
+                                                        className="fa-solid fa-xmark text-danger" title="Hủy bỏ đơn hàng"></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    ))}
                                         
                                     </tbody>
                                 </table>

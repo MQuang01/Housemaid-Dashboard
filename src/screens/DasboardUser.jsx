@@ -1,7 +1,5 @@
-
-
-import MenuUser from "../menu/MenuUser";
-import LayoutCustomer from "../layouts/LayoutUser";
+import LayoutCustomer from "../components/layouts/LayoutUser";
+import Menu from "../components/menu/Menu";
 
 
 function DashboardUser() {
@@ -9,7 +7,7 @@ function DashboardUser() {
         <div className="App">
             <div className="layout-wrapper layout-content-navbar">
                 <div className="layout-container">
-                    <MenuUser/>
+                    <Menu active={"customer"}/>
                     <LayoutCustomer/>
                 </div>
             </div>

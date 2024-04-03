@@ -1,4 +1,3 @@
-import Nav from "../navbar/Nav";
 import Footer from "../footer/Footer";
 import React, { useState, useEffect } from 'react';
 import Pagination from "../pagination/Pagination";
