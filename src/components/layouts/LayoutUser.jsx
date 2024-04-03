@@ -5,12 +5,16 @@ import Pagination from "../pagination/Pagination";
 import { fetchCustomersPaging, fetchDeleteCustomer } from "../../service/UserService";
 import { toast } from 'react-toastify';
 import ModalCreateCustomer from "../modal/ModalCreateCustomer";
+import ModalinfoCustomer from "../modal/ModalinfoCustomer";
+import { fetchFindEmployeeById } from "../../service/EmployeeService";
 
 const LayoutPage = () => {
     const [loading, setLoading] = useState(false);
     const [customer, setCustomer] = useState([]);
     const [showConfirmModal, setShowConfirmModal] = useState(false);
+    const [showEditModal, setShowEditModal] = useState(false);
     const [userToDeleteId, setUserToDeleteId] = useState(null);
+    const [selectedCustomer, setselectedCustomer] = useState(null);
 
     const [dataPage, setDataPage] = useState(
         {
@@ -21,14 +25,14 @@ const LayoutPage = () => {
     const defaultImageUrl = "https://bom.so/KozLmH"
 
 
-    const handleShowEditModal = (jobId) => {
+    const handleShowEditModal = async (customerId) => {
         // Tìm công việc tương ứng với id được chọn
-        // const jobToEdit = job.find(job => job.id === jobId);
-        // // Nếu tồn tại công việc, cập nhật state selectedJob
-        // if (jobToEdit) {
-        //     setSelectedJob(jobToEdit);
-        //     setShowEditModal(true);
-        // }
+        const customerToEdit = await fetchFindEmployeeById(customerId);
+        // Nếu tồn tại công việc, cập nhật state selectedJob
+        if (customerToEdit) {
+            setselectedCustomer(customerToEdit);
+            setShowEditModal(true);
+        }
     };
 
     const handleShowConfirmModal = (userId) => {
@@ -107,6 +111,17 @@ const LayoutPage = () => {
     const handleCloseConfirmModal = () => {
         setShowConfirmModal(false); // Ẩn modal xác nhận xóa nếu người dùng hủy bỏ
     };
+    function genderEngToVn(genderName) {
+        if (genderName === "MALE") {
+            return "Nam";
+        } else if (genderName === "FEMALE") {
+            return "Nữ";
+        } else if (genderName === "OTHER") {
+            return "Khác";
+        } else {
+            return "Khác";
+        }
+    }
     return (
         <>
             <div className="layout-page">
@@ -150,7 +165,7 @@ const LayoutPage = () => {
                                                 <td>{c.address}</td>
                                                 <td>{c.phone}</td>
                                                 <td>{c.dob}</td>
-                                                <td>{c.gender}</td>
+                                                <td>{genderEngToVn(c.gender)}</td>
                                                 <td>
                                                     <div className="d-flex gap-3">
                                                         <button
@@ -177,7 +192,12 @@ const LayoutPage = () => {
                                     show={show} 
                                     handleClose={() => setShow(false)}
                                     onCustomerCreate={handleCustomerCreate} />
-
+                                <ModalinfoCustomer
+                                    show={showEditModal}
+                                    handleClose={() => setShowEditModal(false)}
+                                    employeeData={selectedCustomer} // Truyền thông tin của công việc đã chọn
+                                    // onUpdateEmployee={updateEmployeeList} // Truyền hàm cập nhật danh sách công việc sau khi sửa
+                                />
 
                                 {showConfirmModal &&
                                     <div className="modal fade show" tabIndex="-1" role="dialog" style={{ display: 'block', backgroundColor: 'rgba(0,0,0,0.5)' }}>

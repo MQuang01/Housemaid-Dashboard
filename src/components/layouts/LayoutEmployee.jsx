@@ -113,6 +113,17 @@ const LayoutEmployee = () => {
     const handleCloseConfirmModal = () => {
         setShowConfirmModal(false); // Ẩn modal xác nhận xóa nếu người dùng hủy bỏ
     };
+    function genderEngToVn(genderName) {
+        if (genderName === "MALE") {
+            return "Nam";
+        } else if (genderName === "FEMALE") {
+            return "Nữ";
+        } else if (genderName === "OTHER") {
+            return "Khác";
+        } else {
+            return "Khác";
+        }
+    }
     return (
         <>
             <div className="layout-page">
@@ -156,7 +167,7 @@ const LayoutEmployee = () => {
                                             <td>{c.address}</td>
                                             <td>{c.phone}</td>
                                             <td>{c.dob}</td>
-                                            <td>{c.gender}</td>
+                                            <td>{genderEngToVn(c.gender)}</td>
                                             <td>
                                                 <div className="d-flex gap-3">
                                                     <button

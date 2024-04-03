@@ -49,8 +49,8 @@ const ModalCreateEmployee = ({ show, handleClose, onEmployeeCreate }) => {
             .required("Yêu cầu nhập ngày sinh")
             .max(new Date(), "Ngày phải nhỏ hơn ngày hiện tại"),
         username: yup.string().required("Yêu cầu nhập tài khoản")
-            .min(4, "Tài khoản ít nhất 4 ký tự")
-            .max(16, "Tài khoản không được vượt quá 16 ký tự")
+            .min(6, "Tài khoản ít nhất 6 ký tự")
+            .max(20, "Tài khoản không được vượt quá 20 ký tự")
             .matches(/^\w+$/, "Tài khoản chỉ được chứa chữ cái, số và dấu gạch dưới"),
         password: yup.string().required("Yêu cầu nhập mật khẩu")
             .min(6, "Mật khẩu ít nhất 6 kí tự"),
@@ -105,7 +105,8 @@ const ModalCreateEmployee = ({ show, handleClose, onEmployeeCreate }) => {
                 email: data.email,
                 address: data.address,
                 phone: data.phone,
-                dob: data.dob,
+                dob: formatDate(data.dob),
+                // dob: "1973-08-28",
                 gender: data.gender,
                 shift: data.shift,
                 username: data.username,
@@ -115,8 +116,8 @@ const ModalCreateEmployee = ({ show, handleClose, onEmployeeCreate }) => {
                 isActive: "TRUE",
                 avatar: fileSelected
             }
+            console.log('customer data to added:', frmData);
             const response = await fetchAddEmployeeFormData(frmData);
-            console.log('customer added:', frmData);
             // Gọi hàm callback truyền từ LayoutJob để cập nhật danh sách công việc
             onEmployeeCreate(response);
             handleClose(); // Đóng modal sau khi thêm công việc thành công
@@ -134,6 +135,14 @@ const ModalCreateEmployee = ({ show, handleClose, onEmployeeCreate }) => {
     };
     const { onChange, name, ref, onBlur } = { ...register("serviceImage") };
 
+    //Dữ liệu trên dob là 1991-01-07T17:00:00.000Z, cần chuyển sang 1991-01-07
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const day = date.getDate().toString().padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
     return (
         <>
             <Modal show={show} onHide={onClose}>
@@ -215,6 +224,9 @@ const ModalCreateEmployee = ({ show, handleClose, onEmployeeCreate }) => {
                                     <option key="2" value="FEMALE" selected={getValues("gender") === "2"}>
                                         Nữ
                                     </option>
+                                    <option key="3" value="OTHER" selected={getValues("gender") === "3"}>
+                                        Khác
+                                    </option>
 
                                 </select>
                                 {errors.gender && <span className="text-danger">{errors.gender.message}</span>}
@@ -227,7 +239,6 @@ const ModalCreateEmployee = ({ show, handleClose, onEmployeeCreate }) => {
                                     <option value={'SHIFT_1'}>Ca 1</option>
                                     <option value={'SHIFT_2'}>Ca 2</option>
                                     <option value={'SHIFT_3'}>Ca 3</option>
-                                    <option value={'SHIFT_4'}>Ca 4</option>
 
                                 </select>
                                 {errors.shift && <span className="text-danger">{errors.shift.message}</span>}

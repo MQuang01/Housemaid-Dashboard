@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 
 
 
-const LayoutCategory = ({onCategoryCreate, onCategoryUpdate}) => {
+const LayoutCategory = () => {
     // const { register, handleSubmit, reset,setValue,getValues, formState: { errors } } = useForm({
     //     resolver: yupResolver(schema)
     // });
@@ -45,7 +45,7 @@ const LayoutCategory = ({onCategoryCreate, onCategoryUpdate}) => {
         if (categoryToUpdate){
             setSelectedCategory(categoryToUpdate);
             setShowUpdate(true);
-            console.log(categoryToUpdate)
+            console.log("category to update: ",categoryToUpdate)
         }
     };
     const handleCategoryUpdate = async (newCategory) => {
@@ -155,7 +155,7 @@ const LayoutCategory = ({onCategoryCreate, onCategoryUpdate}) => {
 
                                 <ModalCreateCategory show={show} handleClose={() => setShow(false)} onCategoryCreate={handleCategoryCreate}/>
                                 <ModalUpdateCategory
-                                    showUpdate={showUpdate}
+                                    show={showUpdate}
                                     handleClose={() => setShowUpdate(false)}
                                     onCategoryUpdate={handleCategoryUpdate}
                                     categoryData={selectedCategory}

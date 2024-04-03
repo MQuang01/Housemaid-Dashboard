@@ -23,7 +23,7 @@ export const fetchAddEmployeeFormData = async (frmData) => {
     }
 }
 export const fetchUpdateEmployee = async (employeeId, employeeData) => {
-    console.log("employeeData trong service",employeeData);
+    console.log("employeeData trong API",employeeData);
     try {
         const response = await axios.put(`${InforUrl}/dash-boards/${employeeId}`, employeeData);
         return response.data;
