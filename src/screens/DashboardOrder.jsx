@@ -1,5 +1,5 @@
-import LayoutOrder from "../layouts/LayoutOrder";
-import MenuOrder from "../menu/MenuOrder";
+import LayoutManagerOrder from "../components/layouts/LayoutManagerOrder";
+import MenuOrder from "../components/menu/MenuOrder";
 
 
 function DashboardOrder() {
@@ -8,7 +8,7 @@ function DashboardOrder() {
             <div className="layout-wrapper layout-content-navbar">
                 <div className="layout-container">
                     <MenuOrder />
-                    <LayoutOrder/>
+                    <LayoutManagerOrder />
                 </div>
             </div>
         </div>
