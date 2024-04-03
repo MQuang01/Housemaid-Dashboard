@@ -1,4 +1,3 @@
-import './App.css';
 import Dashboard from "./components/pages/Dashboard";
 import {Suspense} from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
@@ -9,7 +8,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import DashboardCategory from "./components/pages/DashboardCategory";
 import DashboardHistoryOrder from './components/pages/DashboardHistoryOrder';
-import DashboardOrder from './components/pages/DashboardOrder';
+
+import DashboardOrder from "./screens/DashboardOrder";
 
 
 function App() {
@@ -25,7 +25,8 @@ function App() {
                 <Route path='/job' element={<DashboardJob />} />
                 <Route path='/category' element={<DashboardCategory/>} />
                 <Route path='/history' element={<DashboardHistoryOrder/>} />
-                <Route path='/order' element={<DashboardOrder/>} />
+                
+                <Route path='/order' element={<DashboardOrder />} />
             </Routes>
           </Suspense>
           {/*</AuthProvider>*/}

@@ -39,7 +39,7 @@ const MenuDashboard = () => {
                     </li>
                     <li class="menu-item">
                         <a href="/job" class="menu-link">
-                            <i class="menu-icon tf-icons fa fa-table"></i>
+                            <i className="menu-icon tf-icons fa fa-table"></i>
                             <div data-i18n="Boxicons">Dịch vụ</div>
                         </a>
                     </li>
@@ -64,8 +64,8 @@ const MenuDashboard = () => {
 
                     <li className="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
                     <li className="menu-item">
-                        <a
-                            href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
+                        <a  
+                            href="#"
                             target="_blank"
                             className="menu-link"
                         >
@@ -75,7 +75,7 @@ const MenuDashboard = () => {
                     </li>
                     <li className="menu-item">
                         <a
-                            href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                            href="#"
                             target="_blank"
                             className="menu-link"
                         >
