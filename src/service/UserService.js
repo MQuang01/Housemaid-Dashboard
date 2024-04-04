@@ -27,7 +27,7 @@ export const fetchAddCustomerFormData = async (frmData) => {
 
 export const fetchDeleteCustomer = async (jobId) => {
     try {
-        const response = await axios.delete(`${InforUrl}/dash-boards/customers/${jobId}`);
+        const response = await axios.delete(`${InforUrl}/users/${jobId}`);
         return response.data;
     } catch (error) {
         console.error('Error deleting customer: ', error);
