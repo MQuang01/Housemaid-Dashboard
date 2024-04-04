@@ -6,7 +6,7 @@ export const fetchDataOrder = async () => {
         const response = await axios.get(`${InforUrl}/orders`, {
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${sessionStorage.getItem("accessToken")}`
+                'Authorization': `Bearer ${localStorage.getItem("accessToken")}`
             }
         });
         return response.data;
@@ -20,7 +20,7 @@ export const updateStatusOrder = async (id, status) => {
         const response = await axios.put(`${InforUrl}/orders/update-status/${id}?status=${status}`, "",{
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${sessionStorage.getItem("accessToken")}`
+                'Authorization': `Bearer ${localStorage.getItem("accessToken")}`
             }
         });
         return response.data;

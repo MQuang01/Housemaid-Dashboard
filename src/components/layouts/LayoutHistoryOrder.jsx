@@ -49,7 +49,7 @@ const LayoutHistoryOrder = () => {
   const fetchData = async () => {
     try {
       const data = await fetchDataOrder();
-      const filteredOrdersStatusWaiting = data?.content.filter(
+      const filteredOrdersStatusWaiting = data.filter(
         (item) => item.status !== "WAITING"
       );
       setDataOrders(filteredOrdersStatusWaiting);
@@ -72,7 +72,7 @@ const LayoutHistoryOrder = () => {
     page: 0,
     totalPage: 0,
   });
-  const pageSize = 1; // Kích thước của mỗi trang
+  const pageSize = 10; // Kích thước của mỗi trang
 
   const toggleSortOrder = () => {
     setSortOrder(sortOrder === "asc" ? "desc" : "asc");

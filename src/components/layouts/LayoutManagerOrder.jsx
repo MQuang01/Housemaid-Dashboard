@@ -51,11 +51,13 @@ const LayoutManagerOrder = () => {
     setLoading(true);
     try {
       const data = await fetchDataOrder();
-      const filteredOrdersStatusWaiting = data?.content.filter(
-        (item) => item.status === "WAITING"
-      );
-      setDataOrders(filteredOrdersStatusWaiting);
-      console.log("Data", filteredOrdersStatusWaiting);
+      console.table("Log data", data);
+      if(data) {
+        const filteredOrdersStatusWaiting = data.filter(
+          (item) => item.status === "WAITING"
+        );
+        setDataOrders(filteredOrdersStatusWaiting);
+      }
     } catch (error) {
       toast.error("Lấy data Order thất bại, error: " + error.message);
     } finally {

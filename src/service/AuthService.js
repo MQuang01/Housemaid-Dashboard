@@ -8,13 +8,12 @@ export const Login = async (username, password) => {
                 username: username,
                 password: password,
             });
-        sessionStorage.setItem("accessToken", response.data);
-        console.log(response.data, "Token");
+        localStorage.setItem("accessToken", response.data);
         return true;
     } catch (error) {
         return false;
     }
 }
 export const Logout = () => {
-    sessionStorage.removeItem("admin");
+    localStorage.removeItem("admin");
 }
