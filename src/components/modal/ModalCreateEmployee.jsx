@@ -38,8 +38,7 @@ const ModalCreateEmployee = ({ show, handleClose, onEmployeeCreate }) => {
             .max(100, "Địa chỉ không được vượt quá 100 ký tự"),
         phone: yup.string()
             .required("Yêu cầu nhập SĐT")
-            // .matches(/((09|03|07|08|05)+([0-9]{8}))/, "SĐT phải đúng định dạng")
-            .matches(/(09|03|07|08|05)/, "SĐT phải đúng định dạng (ví dụ: 0912345678)")
+            .matches(/(84|0[3|5|7|8|9])+([0-9]{8})\b/g, "Yêu cầu nhập đúng số điện thoại")
             .min(10, "SĐT phải có ít nhất 10 số")
             .max(11, "SĐT không được vượt quá 11 số"),
         gender: yup.string().required('Vui lòng chọn giới tính'),
@@ -53,7 +52,10 @@ const ModalCreateEmployee = ({ show, handleClose, onEmployeeCreate }) => {
             .max(20, "Tài khoản không được vượt quá 20 ký tự")
             .matches(/^\w+$/, "Tài khoản chỉ được chứa chữ cái, số và dấu gạch dưới"),
         password: yup.string().required("Yêu cầu nhập mật khẩu")
-            .min(6, "Mật khẩu ít nhất 6 kí tự"),
+            .min(6, "Mật khẩu ít nhất 6 kí tự")
+            .max(30, "Mật khẩu không được vượt quá 30 kí tự")
+            .matches(/^\S+$/, "Mật khẩu không được có khoảng trống"),
+
         confirmPassword: yup.string().required("Yêu cầu xác nhận mật khẩu")
             .oneOf([yup.ref("password")], "Mật khẩu không khớp")
     });
@@ -281,7 +283,7 @@ const ModalCreateEmployee = ({ show, handleClose, onEmployeeCreate }) => {
                             <div className="col-md-6" style={{marginTop:'7px'}}>
                             <div className="form-group has-validation">
                                 <div className="form-group" id="form-confirm-password">
-                                    <label className="ms-1 title-input">Xác nhạn mật khẩu</label>
+                                    <label className="ms-1 title-input">Xác nhận mật khẩu</label>
                                     <div className="position-relative">
                                         <input
                                             type={`${isShowConfirmPassword ? "text" : "password"}`}
