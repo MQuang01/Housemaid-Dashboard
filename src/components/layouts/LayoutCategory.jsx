@@ -1,4 +1,3 @@
-import Nav from "../navbar/Nav";
 import Footer from "../footer/Footer";
 import React, { useState, useEffect } from 'react';
 import {fetchCategories,fetchDeleteCategoryById} from "../../service/CategoryService";
@@ -94,7 +93,6 @@ const LayoutCategory = () => {
     return(
         <>
             <div className="layout-page">
-                <Nav />
                 <div className="content-wrapper">
                     <div className="container-xxl flex-grow-1 container-p-y">
                         

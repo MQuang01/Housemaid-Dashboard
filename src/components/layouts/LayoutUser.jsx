@@ -1,4 +1,3 @@
-import Nav from "../navbar/Nav";
 import Footer from "../footer/Footer";
 import React, { useState, useEffect } from 'react';
 import Pagination from "../pagination/Pagination";
@@ -122,10 +121,12 @@ const LayoutPage = () => {
             return "Khác";
         }
     }
+
+    const startIndex = dataPage.page * 5 + 1;
+
     return (
         <>
             <div className="layout-page">
-                <Nav />
                 <div className="content-wrapper">
                     <div className="container-xxl flex-grow-1 container-p-y">
                         <h4 className="fw-bold py-3 mb-2"><span className="text-muted fw-light">Dữ liệu /</span> Thống kê khách hàng</h4>
@@ -153,8 +154,8 @@ const LayoutPage = () => {
                                     </thead>
                                     <tbody className="table-border-bottom-0">
                                         {customer.map((c, index) => (
-                                            <tr key={index}>
-                                                <td>{index + 1}</td>
+                                            <tr key={c.id}>
+                                                <td>{index + startIndex}</td>
                                                 <td><i className="fa-lg text-danger "></i> <strong>{c.fullName}</strong></td>
                                                 <td>{c.fileUrl ? (
                                                     <img src={c.fileUrl} height="40px" width="40px" />

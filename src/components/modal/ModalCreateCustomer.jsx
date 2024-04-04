@@ -88,6 +88,8 @@ const ModalCreateCustomer = ({ show, handleClose, onCustomerCreate }) => {
     }
     const onSubmit = async (data) => {
         try {
+            setLoading(true);
+
             const currentDate = new Date();
             // Lưu ngày tháng năm vào biến
             const month = currentDate.getMonth() + 1; // Tháng bắt đầu từ 0
@@ -103,7 +105,7 @@ const ModalCreateCustomer = ({ show, handleClose, onCustomerCreate }) => {
                 email: data.email,
                 address: data.address,
                 phone: data.phone,
-                dob: data.dob,
+                dob: formatDate(data.dob),
                 gender: data.gender,
                 username: data.username,
                 password: data.password,
@@ -119,16 +121,23 @@ const ModalCreateCustomer = ({ show, handleClose, onCustomerCreate }) => {
             reset();
             setImageUrl(null);
             setImageLink('');
-            // setLoading(false); // Hide loading animation
+            setLoading(false); // Hide loading animation
             toast.success("Thêm mới thành công");
         } catch (error) {
             console.error('Error adding job: ', error);
-            // setLoading(false); // Hide loading animation even in case of error
+            setLoading(false); // Hide loading animation even in case of error
             toast.error("Thêm mới thất bại");
         }
     };
     const { onChange, name, ref, onBlur } = { ...register("serviceImage") };
 
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const day = date.getDate().toString().padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
     return (
         <>
             <Modal show={show} onHide={onClose}>
@@ -283,7 +292,7 @@ const ModalCreateCustomer = ({ show, handleClose, onCustomerCreate }) => {
                     </Button>
                 </ModalFooter>
             </Modal>
-            {/*<LoadingModal loading={loading} /> /!* Render loading animation *!/*/}
+            <LoadingModal loading={loading} /> {/* Render loading animation */}
 
         </>
 

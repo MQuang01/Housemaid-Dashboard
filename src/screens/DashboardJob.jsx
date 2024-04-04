@@ -1,5 +1,5 @@
-import MenuJob from "../menu/MenuJob";
-import LayoutJob from "../layouts/LayoutJob";
+import LayoutJob from "../components/layouts/LayoutJob";
+import Menu from "../components/menu/Menu";
 
 
 function DashboardJob() {
@@ -7,7 +7,7 @@ function DashboardJob() {
         <div className="App">
             <div className="layout-wrapper layout-content-navbar">
                 <div className="layout-container">
-                    <MenuJob/>
+                    <Menu active={"job"}/>
                     <LayoutJob/>
                 </div>
             </div>
