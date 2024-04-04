@@ -1,6 +1,15 @@
-import { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
 
 const Menu = ({ active }) => {
+    const { logout } = useAuth();
+
+    const handleLogout = () => {
+        logout();
+        window.location.href = "/admin/login";
+        // localStorage.clear();
+        sessionStorage.removeItem('accessToken');
+    }
+
     return (
         <>
             <aside id="layout-menu" className="layout-menu menu-vertical menu bg-menu-theme">
@@ -68,13 +77,13 @@ const Menu = ({ active }) => {
 
                     <li className="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
                     <li className={`menu-item`}>
-                        <a
-                            href="#"
+                        <button  
+                            onClick={handleLogout}
                             className="menu-link"
                         >
                             <i class="menu-icon tf-icons fa fa-power-off"></i>
                             <div data-i18n="Documentation">Đăng xuất</div>
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </aside>

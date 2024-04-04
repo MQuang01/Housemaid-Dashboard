@@ -55,6 +55,7 @@ const LayoutManagerOrder = () => {
         (item) => item.status === "WAITING"
       );
       setDataOrders(filteredOrdersStatusWaiting);
+      console.log("Data", filteredOrdersStatusWaiting);
     } catch (error) {
       toast.error("Lấy data Order thất bại, error: " + error.message);
     } finally {
