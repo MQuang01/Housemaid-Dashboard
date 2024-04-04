@@ -1,6 +1,6 @@
 import Dashboard from "./screens/Dashboard";
 import {Suspense} from "react";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, Route, Routes, useNavigate} from "react-router-dom";
 import DashboardCustomer from "./screens/DasboardUser";
 import DashboardEmployee from "./screens/DashboardEmployee";
 import DashboardJob from "./screens/DashboardJob";
@@ -10,15 +10,19 @@ import DashboardCategory from "./screens/DashboardCategory";
 import DashboardHistoryOrder from './screens/DashboardHistoryOrder';
 
 import DashboardOrder from "./screens/DashboardOrder";
+import LoginAdmin from "./screens/Login/LoginAdmin";
+import {AuthProvider, useAuth} from "./context/AuthContext";
 
 
 function App() {
+
   return (
       <>
         <BrowserRouter>
-          {/*<AuthProvider>*/}
+          <AuthProvider>
           <Suspense>
             <Routes>
+              <Route path="/admin/login" element={<LoginAdmin />} />
               <Route path='/dashboard' >
                 <Route path="" element={<Dashboard/>} />
                 <Route path='customers' element={<DashboardCustomer />} />
@@ -30,7 +34,7 @@ function App() {
               </Route>
             </Routes>
           </Suspense>
-          {/*</AuthProvider>*/}
+          </AuthProvider>
         </BrowserRouter >
         {/*<ToastContainer />*/}
         <ToastContainer />
