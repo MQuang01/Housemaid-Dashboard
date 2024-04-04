@@ -90,6 +90,8 @@ const ModalCreateEmployee = ({ show, handleClose, onEmployeeCreate }) => {
     }
     const onSubmit = async (data) => {
         try {
+            setLoading(true);
+
             const currentDate = new Date();
             // Lưu ngày tháng năm vào biến
             const month = currentDate.getMonth() + 1; // Tháng bắt đầu từ 0
@@ -125,11 +127,11 @@ const ModalCreateEmployee = ({ show, handleClose, onEmployeeCreate }) => {
             reset();
             setImageUrl(null);
             setImageLink('');
-            // setLoading(false); // Hide loading animation
+            setLoading(false); // Hide loading animation
             toast.success("Thêm mới thành công");
         } catch (error) {
             console.error('Error adding job: ', error);
-            // setLoading(false); // Hide loading animation even in case of error
+            setLoading(false); // Hide loading animation even in case of error
             toast.error("Thêm mới thất bại");
         }
     };
@@ -315,7 +317,7 @@ const ModalCreateEmployee = ({ show, handleClose, onEmployeeCreate }) => {
                     </Button>
                 </ModalFooter>
             </Modal>
-            {/*<LoadingModal loading={loading} /> /!* Render loading animation *!/*/}
+            <LoadingModal loading={loading} /> {/* Render loading animation */}
 
         </>
 

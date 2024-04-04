@@ -33,9 +33,9 @@ export const fetchUpdateEmployee = async (employeeId, employeeData) => {
     }
 };
 
-export const fetchDeleteEmployee = async (jobId) => {
+export const fetchDeleteEmployee = async (employeeId) => {
     try {
-        const response = await axios.delete(`${InforUrl}/dash-boards/${jobId}`);
+        const response = await axios.delete(`${InforUrl}/users/${employeeId}`);
         return response.data;
     } catch (error) {
         console.error('Error deleting Employee: ', error);
