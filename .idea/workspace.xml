@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51efc443-fda5-45b7-895f-4cbb3e37478a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layouts/LayoutManagerOrder.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/LayoutManagerOrder.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/menu/Menu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/menu/Menu.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/until/InforUrl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/until/InforUrl.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +73,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "hiep-it/manager-history-order",
+    "git-widget-placeholder": "hiep-it/fix-bug-manager-dashboard",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/nhhie/OneDrive/Documents/Housemaid-Dashboard/src/until",
     "node.js.detected.package.eslint": "true",
@@ -167,6 +156,7 @@
       <workItem from="1712152667520" duration="849000" />
       <workItem from="1712153533543" duration="589000" />
       <workItem from="1712154141407" duration="1061000" />
+      <workItem from="1712214410726" duration="493000" />
     </task>
     <servers />
   </component>

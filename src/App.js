@@ -22,7 +22,7 @@ function App() {
           <AuthProvider>
           <Suspense>
             <Routes>
-              <Route path="/admin/login" element={<LoginAdmin />} />
+              <Route path="/admin" element={<LoginAdmin />} />
               <Route path='/dashboard' >
                 <Route path="" element={<Dashboard/>} />
                 <Route path='customers' element={<DashboardCustomer />} />

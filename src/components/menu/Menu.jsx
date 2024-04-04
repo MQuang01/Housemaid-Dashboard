@@ -5,7 +5,7 @@ const Menu = ({ active }) => {
 
     const handleLogout = () => {
         logout();
-        window.location.href = "/admin/login";
+        window.location.href = "/admin";
         // localStorage.clear();
         sessionStorage.removeItem('accessToken');
     }
