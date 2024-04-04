@@ -23,7 +23,7 @@ const ModalEditEmployee = ({ show, handleClose, employeeData, onUpdateEmployee }
             .max(100, "Địa chỉ không được vượt quá 100 ký tự"),
         phone: yup.string()
             .required("Yêu cầu nhập SĐT")
-            .matches(/(09|03|07|08|05)/, "SĐT phải đúng định dạng (ví dụ: 0912345678)")
+            .matches(/(84|0[3|5|7|8|9])+([0-9]{8})\b/g, "Yêu cầu nhập đúng số điện thoại (ví dụ: 0912345678)")
             .min(10, "SĐT phải có ít nhất 10 số")
             .max(11, "SĐT không được vượt quá 11 số"),
         gender: yup.string().required('Vui lòng chọn giới tính'),
