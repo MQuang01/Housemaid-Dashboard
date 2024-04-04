@@ -17,16 +17,26 @@ const Menu = ({ active }) => {
 
                 <ul className="menu-inner py-1">
 
-                    <li className={`menu-item ${active === 'dashboard' ? "active" : ""}`}>
-                        <a href="/dashboard" className="menu-link ">
-                            <i className="menu-icon tf-icons fa fa-home"></i>
-                            <div data-i18n="Analytics">Dashboard</div>
+                    {/*<li className={`menu-item ${active === 'dashboard' ? "active" : ""}`}>*/}
+                    {/*    <a href="/dashboard" className="menu-link ">*/}
+                    {/*        <i className="menu-icon tf-icons fa fa-home"></i>*/}
+                    {/*        <div data-i18n="Analytics">Dashboard</div>*/}
+                    {/*    </a>*/}
+                    {/*</li>*/}
+
+                    <li className={`menu-item ${active === 'order' ? "active" : ""}`}>
+                        <a href="/dashboard/orders" className="menu-link">
+                            <i className="menu-icon tf-icons fa fa-table"></i>
+                            <div data-i18n="Boxicons">Quản lý hóa đơn</div>
+                        </a>
+                    </li>
+                    <li className={`menu-item ${active === 'histories-order' ? "active" : ""}`}>
+                        <a href="/dashboard/histories-order" className="menu-link">
+                            <i className="menu-icon tf-icons fa fa-table"></i>
+                            <div data-i18n="Boxicons">Lịch sử đơn hàng</div>
                         </a>
                     </li>
 
-                    <li className="menu-header small text-uppercase">
-                        <span className="menu-header-text">Pages</span>
-                    </li>
                     <li 
                         className={`menu-item ${active === 'customer' ? "active" : ""}`}
                     >
@@ -53,18 +63,7 @@ const Menu = ({ active }) => {
                             <div data-i18n="Boxicons">Danh mục</div>
                         </a>
                     </li>
-                    <li className={`menu-item ${active === 'histories-order' ? "active" : ""}`}>
-                        <a href="/dashboard/histories-order" className="menu-link">
-                            <i className="menu-icon tf-icons fa fa-table"></i>
-                            <div data-i18n="Boxicons">Lịch sử đơn hàng</div>
-                        </a>
-                    </li>
-                    <li className={`menu-item ${active === 'order' ? "active" : ""}`}>
-                        <a href="/dashboard/orders" className="menu-link">
-                            <i className="menu-icon tf-icons fa fa-table"></i>
-                            <div data-i18n="Boxicons">Quản lý hóa đơn</div>
-                        </a>
-                    </li>
+
 
                     <li className="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
                     <li className={`menu-item`}>

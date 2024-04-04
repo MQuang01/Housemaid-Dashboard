@@ -123,6 +123,10 @@ const LayoutEmployee = () => {
             return "Khác";
         }
     }
+
+    const startIndex = dataPage.page * 5 + 1;
+    const endIndex = Math.min(startIndex + 9, dataPage.totalPage);
+
     return (
         <>
             <div className="layout-page">
@@ -153,8 +157,8 @@ const LayoutEmployee = () => {
                                     </thead>
                                     <tbody className="table-border-bottom-0">
                                     {employee.map((c, index) => (
-                                        <tr key={index}>
-                                            <td>{index + 1}</td>
+                                        <tr key={c.id}>
+                                            <td>{index + startIndex}</td>
                                             <td><i className="fa-lg text-danger "></i> <strong>{c.fullName}</strong></td>
                                             <td>{c.fileUrl ? (
                                                 <img src={c.fileUrl} height="40px" width="40px" />

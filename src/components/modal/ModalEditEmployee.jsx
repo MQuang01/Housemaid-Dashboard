@@ -74,6 +74,7 @@ const ModalEditEmployee = ({ show, handleClose, employeeData, onUpdateEmployee }
         data = {
             ...data,
             "typeUser":"EMPLOYEE",
+            "username": employeeData.username,
             // "roles": [
             //     {
             //         "role": "ADMIN"
@@ -83,7 +84,6 @@ const ModalEditEmployee = ({ show, handleClose, employeeData, onUpdateEmployee }
         };
 
         try {
-            console.log("Kiêm tra dữ liệu trước khi cập nhật",data)
 
             const updatedEmployee = await fetchUpdateEmployee(employeeData.id, data);
 
