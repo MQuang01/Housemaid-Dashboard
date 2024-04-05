@@ -6,8 +6,35 @@ import { toast } from "react-toastify";
 import ModelDetailOrder from "../modal/ModelDetailOrder";
 import { formatMoney } from "../../until/FormatMoney";
 import Pagination from "../pagination/Pagination";
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 const LayoutHistoryOrder = () => {
+  // const options =  {
+  //   title: 'Title',
+  //   message: 'Message',
+  //   buttons: [
+  //     {
+  //       label: 'Yes',
+  //       onClick: () => alert('Click Yes')
+  //     },
+  //     {
+  //       label: 'No',
+  //     }
+  //   ],
+  //   closeOnEscape: true,
+  //   closeOnClickOutside: true,
+  //   keyCodeForClose: [8, 32],
+  //   willUnmount: () => {},
+  //   afterClose: () => {},
+  //   onClickOutside: () => {},
+  //   onKeypress: () => {},
+  //   onKeypressEscape: () => {},
+  //   overlayClassName: "overlay-custom-class-name"
+  // };
+  
+  
+
   const [loading, setLoading] = useState(false);
   const [dataOrders, setDataOrders] = useState([]);
   const [showDetaiOrderModal, setShowDetaiOrderModal] = useState(false);
@@ -65,8 +92,8 @@ const LayoutHistoryOrder = () => {
   }, []);
 
   const [searchKey, setSearchKey] = useState("");
-  const [sortKey, setSortKey] = useState("");
-  const [sortOrder, setSortOrder] = useState("asc");
+  const [sortKey, setSortKey] = useState("id");
+  const [sortOrder, setSortOrder] = useState("desc");
   const [filteredOrders, setFilteredOrders] = useState([]);
   const [dataPage, setDataPage] = useState({
     page: 0,
@@ -127,6 +154,7 @@ const LayoutHistoryOrder = () => {
         <div className="content-wrapper">
           <div className="container-xxl flex-grow-1 container-p-y">
             <h4 className="fw-bold py-3 mb-2">
+
               <span className="text-muted fw-light">Dữ liệu /</span>Lịch sử hóa đơn
             </h4>
 
@@ -249,16 +277,19 @@ const LayoutHistoryOrder = () => {
                             {(item.status === "PROCESS" || item.status === "CANCEL") && (
                                 <button
                                     variant="outline-success"
-                                    onClick={() => {
-                                        const isConfirmed = window.confirm(
-                                        "Bạn muốn reset lại đơn hàng có mã: " +
-                                            item.currentlyCode +
-                                            " này không?"
-                                        );
-                                        if (isConfirmed) {
-                                        handleUpdateStatusOrder(item.id, "WAITING");
+                                    onClick={() => {confirmAlert({
+                                      title: 'Thông báo',
+                                      message: `Bạn muốn reset lại đơn đặt dịch vụ có mã: ${item.currentlyCode} này không?`,
+                                      buttons: [
+                                        {
+                                          label: 'Đúng',
+                                          onClick: () => handleUpdateStatusOrder(item.id ,"WAITING")
+                                        },
+                                        {
+                                          label: 'Không',
                                         }
-                                    }}
+                                      ],
+                                    })}}
                                     className="btn btn-outline-warning me-2"
                                     title="Reset hóa đơn"
                                     >

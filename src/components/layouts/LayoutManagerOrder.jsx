@@ -2,10 +2,11 @@ import Footer from "../footer/Footer";
 import React, { useEffect, useState } from "react";
 import LoadingModal from "../loading/LoadingModal";
 import { fetchDataOrder, updateStatusOrder } from "../../service/OrderService";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import ModelDetailOrder from "../modal/ModelDetailOrder";
 import { formatMoney } from "../../until/FormatMoney";
 import Pagination from "../pagination/Pagination";
+import { confirmAlert } from "react-confirm-alert";
 
 const LayoutManagerOrder = () => {
   const [loading, setLoading] = useState(false);
@@ -127,6 +128,7 @@ const LayoutManagerOrder = () => {
   return (
     <>
       <LoadingModal loading={loading} />
+      <ToastContainer />
       <div className="layout-page">
         <div className="content-wrapper">
           <div className="container-xxl flex-grow-1 container-p-y">
@@ -250,33 +252,39 @@ const LayoutManagerOrder = () => {
                               <i className={"fa-solid fa-eye"}></i>
                             </button>
                             <button
-                              variant="outline-success"
-                              onClick={() => {
-                                const isConfirmed = window.confirm(
-                                  "Bạn muốn chấp nhận đơn hàng có mã: " +
-                                    item.currentlyCode +
-                                    " này?"
-                                );
-                                if (isConfirmed) {
-                                  handleUpdateStatusOrder(item.id, "PROCESS");
+                            onClick={() => {confirmAlert({
+                              title: 'Thông báo',
+                              message: `Bạn muốn chấp nhận đơn đặt dịch vụ có mã: ${item.currentlyCode} này?`,
+                              buttons: [
+                                {
+                                  label: 'Đúng',
+                                  onClick: () => handleUpdateStatusOrder(item.id, "PROCESS")
+                                },
+                                {
+                                  label: 'Không',
                                 }
-                              }}
+                              ],
+                            })}}
+                              variant="outline-success"
                               className="btn btn-outline-success me-2"
                               title="Chấp nhận đơn hàng"
                             >
                               <i className={"fa-solid fa-check"}></i>
                             </button>
                             <button
-                              onClick={() => {
-                                const isConfirmed = window.confirm(
-                                  "Bạn muốn hủy đơn hàng có mã: " +
-                                    item.currentlyCode +
-                                    " này?"
-                                );
-                                if (isConfirmed) {
-                                  handleUpdateStatusOrder(item.id, "CANCEL");
-                                }
-                              }}
+                              onClick={() => {confirmAlert({
+                                title: 'Thông báo',
+                                message: `Bạn muốn hủy đơn đặt dịch vụ có mã: ${item.currentlyCode} này?`,
+                                buttons: [
+                                  {
+                                    label: 'Đúng',
+                                    onClick: () => handleUpdateStatusOrder(item.id, "CANCEL")
+                                  },
+                                  {
+                                    label: 'Không',
+                                  }
+                                ],
+                              })}}
                               className="btn btn-outline-danger me-2"
                               title="Hủy bỏ đơn hàng"
                             >
