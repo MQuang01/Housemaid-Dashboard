@@ -42,7 +42,6 @@ const ModalCreateEmployee = ({ show, handleClose, onEmployeeCreate }) => {
             .min(10, "SĐT phải có ít nhất 10 số")
             .max(11, "SĐT không được vượt quá 11 số"),
         gender: yup.string().required('Vui lòng chọn giới tính'),
-        shift: yup.string().required('Vui lòng chọn ca làm'),
         dob: yup.date()
             .typeError("Yêu cầu nhập ngày sinh")
             .required("Yêu cầu nhập ngày sinh")
@@ -104,7 +103,6 @@ const ModalCreateEmployee = ({ show, handleClose, onEmployeeCreate }) => {
 
             let fileSelected = getValues().serviceImage[0];
             let frmData = {
-
                 fullName: data.fullName,
                 email: data.email,
                 address: data.address,
@@ -112,7 +110,6 @@ const ModalCreateEmployee = ({ show, handleClose, onEmployeeCreate }) => {
                 dob: formatDate(data.dob),
                 // dob: "1973-08-28",
                 gender: data.gender,
-                shift: data.shift,
                 username: data.username,
                 password: data.password,
                 typeUser: "EMPLOYEE",
@@ -235,19 +232,7 @@ const ModalCreateEmployee = ({ show, handleClose, onEmployeeCreate }) => {
                                 </select>
                                 {errors.gender && <span className="text-danger">{errors.gender.message}</span>}
                             </div>
-                            <div className="col-md-6">
-                                <label htmlFor="shift" className="form-label">Chọn ca làm</label>
-                                <select className="form-select" id="shift" {...register("shift")}>
-                                    <option value="">Chọn ca</option>
-
-                                    <option value={'SHIFT_1'}>Ca 1</option>
-                                    <option value={'SHIFT_2'}>Ca 2</option>
-                                    <option value={'SHIFT_3'}>Ca 3</option>
-
-                                </select>
-                                {errors.shift && <span className="text-danger">{errors.shift.message}</span>}
-                            </div>
-
+                
                         </div>
 
                         <div className="row mb-3">
