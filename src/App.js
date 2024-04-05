@@ -1,6 +1,5 @@
-import Dashboard from "./screens/Dashboard";
 import {Suspense} from "react";
-import {BrowserRouter, Route, Routes, useNavigate} from "react-router-dom";
+import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import DashboardCustomer from "./screens/DasboardUser";
 import DashboardEmployee from "./screens/DashboardEmployee";
 import DashboardJob from "./screens/DashboardJob";
@@ -11,20 +10,20 @@ import DashboardHistoryOrder from './screens/DashboardHistoryOrder';
 
 import DashboardOrder from "./screens/DashboardOrder";
 import LoginAdmin from "./screens/Login/LoginAdmin";
-import {AuthProvider, useAuth} from "./context/AuthContext";
+import {AuthProvider} from "./context/AuthContext";
+
 
 
 function App() {
-
   return (
       <>
         <BrowserRouter>
           <AuthProvider>
           <Suspense>
             <Routes>
+              <Route path="/" element={<Navigate to={"/admin"} />} />
               <Route path="/admin" element={<LoginAdmin />} />
-              <Route path='/dashboard' >
-                <Route path="" element={<Dashboard/>} />
+              <Route path='/dashboard'>
                 <Route path='customers' element={<DashboardCustomer />} />
                 <Route path='employee' element={<DashboardEmployee />} />
                 <Route path='jobs' element={<DashboardJob />} />
