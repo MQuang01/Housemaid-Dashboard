@@ -27,7 +27,6 @@ const ModalEditEmployee = ({ show, handleClose, employeeData, onUpdateEmployee }
             .min(10, "SĐT phải có ít nhất 10 số")
             .max(11, "SĐT không được vượt quá 11 số"),
         gender: yup.string().required('Vui lòng chọn giới tính'),
-        shift: yup.string().required('Vui lòng chọn ca làm'),
         // dob: yup.date()
         //     .typeError("Yêu cầu nhập ngày sinh")
         //     .required("Yêu cầu nhập ngày sinh")
@@ -48,7 +47,6 @@ const ModalEditEmployee = ({ show, handleClose, employeeData, onUpdateEmployee }
                 setValue("phone", employeeData.phone);
                 setValue("dob", employeeData.dob);
                 setValue("gender", employeeData.gender);
-                setValue("shift", employeeData.shift);
                 // setValue("username", employeeData.username);
                 // setValue("oldPassword", employeeData.password);
                 // setValue("roles", employeeData.typeUser);
@@ -69,12 +67,11 @@ const ModalEditEmployee = ({ show, handleClose, employeeData, onUpdateEmployee }
     };
 
     const onSubmit = async (data) => {
-        console.log("dữ liệu cần cập nhật data",data)
 
         data = {
             ...data,
-            "typeUser":"EMPLOYEE",
-            "username": employeeData.username,
+            typeUser:"EMPLOYEE",
+            // "username": employeeData.username,
             // "roles": [
             //     {
             //         "role": "ADMIN"
@@ -82,6 +79,7 @@ const ModalEditEmployee = ({ show, handleClose, employeeData, onUpdateEmployee }
             // ]
             // urlImage: imageUrl
         };
+        console.log("dữ liệu cần cập nhật data",data)
 
         try {
 
@@ -186,16 +184,7 @@ const ModalEditEmployee = ({ show, handleClose, employeeData, onUpdateEmployee }
                             </select>
                             {errors.gender && <span className="text-danger">{errors.gender.message}</span>}
                         </div>
-                        <div className="col-md-6">
-                            <label htmlFor="shift" className="form-label">Chọn ca làm</label>
-                            <select className="form-select" id="shift" {...register("shift")}>
-                                <option value={'SHIFT_1'} selected={getValues("shift") === "SHIFT_1"}>Ca 1</option>
-                                <option value={'SHIFT_2'} selected={getValues("shift") === "SHIFT_2"}>Ca 2</option>
-                                <option value={'SHIFT_3'} selected={getValues("shift") === "SHIFT_3"}>Ca 3</option>
 
-                            </select>
-                            {errors.shiftType && <span className="text-danger">{errors.shiftType.message}</span>}
-                        </div>
 
                     </div>
 
