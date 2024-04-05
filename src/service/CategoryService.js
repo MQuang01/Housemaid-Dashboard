@@ -9,6 +9,7 @@ export const fetchCategories = async () => {
         console.error('Error fetching data: ', error);
     }
 }
+
 export const fetchAddCategoryFormData = async (frmData) => {
     try {
         const response = await axios.post(`${InforUrl}/categories`, frmData, {

@@ -27,10 +27,16 @@ const LayoutManagerOrder = () => {
       setDataOrders(updatedDataOrders);
   
       // Hiển thị thông báo thành công
-      toast.success(`Đã cập nhật trạng thái đơn hàng thành công`);
+      toast.success(`Đã cập nhật trạng thái đơn hàng thành công`, {
+        autoClose: 10000,
+        position: "top-center"
+      });
     } catch (error) {
       // Xử lý lỗi nếu có
-      toast.error("Sửa trạng thái đơn hàng bị lỗi: " + error.message);
+      toast.error("Sửa trạng thái đơn hàng bị lỗi: " + error.message, {
+        autoClose: 10000,
+        position: "top-center"
+      });
     } finally {
       setLoading(false);
     }
@@ -52,7 +58,6 @@ const LayoutManagerOrder = () => {
     setLoading(true);
     try {
       const data = await fetchDataOrder();
-      console.table("Log data", data);
       if(data) {
         const filteredOrdersStatusWaiting = data.filter(
           (item) => item.status === "WAITING"
@@ -60,7 +65,10 @@ const LayoutManagerOrder = () => {
         setDataOrders(filteredOrdersStatusWaiting);
       }
     } catch (error) {
-      toast.error("Lấy data Order thất bại, error: " + error.message);
+      toast.error("Lấy data Order thất bại, error: " + error.message, {
+        autoClose: 10000,
+        position: "top-center"
+      });
     } finally {
       setLoading(false);
     }
@@ -90,40 +98,42 @@ const LayoutManagerOrder = () => {
   useEffect(() => {
     let filteredOrders = [...dataOrders];
 
-    if (searchKey.trim() !== "") {
-      filteredOrders = filteredOrders.filter(
-        (order) =>
-          order.currentlyCode.toLowerCase().includes(searchKey.toLowerCase()) ||
-          order.address.toLowerCase().includes(searchKey.toLowerCase()) ||
-          order.categoryName.toLowerCase().includes(searchKey.toLowerCase())
-      );
+    if(filteredOrders) {
+      if (searchKey.trim() !== "") {
+        filteredOrders = filteredOrders.filter(
+          (order) =>
+            order.currentlyCode.toLowerCase().includes(searchKey.toLowerCase()) ||
+            order.address.toLowerCase().includes(searchKey.toLowerCase()) ||
+            order.categoryName.toLowerCase().includes(searchKey.toLowerCase())
+        );
+      }
+  
+      if (sortKey.trim() !== "") {
+        filteredOrders.sort((a, b) => {
+          let comparison = 0;
+          if (a[sortKey] < b[sortKey]) {
+            comparison = -1;
+          } else if (a[sortKey] > b[sortKey]) {
+            comparison = 1;
+          }
+          return sortOrder === "asc" ? comparison : comparison * -1;
+        });
+      }
+      
+      // Tính toán số trang và cập nhật dataPage
+      const totalPage = Math.ceil(filteredOrders.length / pageSize);
+      setDataPage((prevDataPage) => ({
+        ...prevDataPage,
+        page: dataPage.page,
+        totalPage,
+      }));
+  
+      // Chia mảng thành các trang và lưu vào filteredOrders
+      const startIndex = dataPage.page * pageSize;
+      const endIndex = startIndex + pageSize;
+      const slicedOrders = filteredOrders.slice(startIndex, endIndex);
+      setFilteredOrders(slicedOrders);
     }
-
-    if (sortKey.trim() !== "") {
-      filteredOrders.sort((a, b) => {
-        let comparison = 0;
-        if (a[sortKey] < b[sortKey]) {
-          comparison = -1;
-        } else if (a[sortKey] > b[sortKey]) {
-          comparison = 1;
-        }
-        return sortOrder === "asc" ? comparison : comparison * -1;
-      });
-    }
-    
-    // Tính toán số trang và cập nhật dataPage
-    const totalPage = Math.ceil(filteredOrders.length / pageSize);
-    setDataPage((prevDataPage) => ({
-      ...prevDataPage,
-      page: dataPage.page,
-      totalPage,
-    }));
-
-    // Chia mảng thành các trang và lưu vào filteredOrders
-    const startIndex = dataPage.page * pageSize;
-    const endIndex = startIndex + pageSize;
-    const slicedOrders = filteredOrders.slice(startIndex, endIndex);
-    setFilteredOrders(slicedOrders);
   }, [dataOrders, searchKey, sortKey, sortOrder, pageSize, dataPage.page]); // Thêm dataPage.page vào dependencies để hiệu ứng được cập nhật khi thay đổi trang
 
   return (
@@ -146,6 +156,7 @@ const LayoutManagerOrder = () => {
                 defaultValue={searchKey}
                 name={"search"}
               />
+             
             </div>
             <div className="card">
               <div className="table-responsive text-nowrap">
@@ -230,11 +241,11 @@ const LayoutManagerOrder = () => {
                   <tbody className="table-border-bottom-0 ">
                     {filteredOrders.map((item, index) => (
                       <tr key={item.id}>
-                        <td>{index + 1}</td>
+                        <td>{index + 1 + (dataPage.page * 10)}</td>
                         <td>{item.currentlyCode}</td>
                         <td>{item.categoryName}</td>
                         <td style={{wordWrap: "break-word"}}>{item.address}</td>
-                        <td>{formatMoney(item.totalPrice)}</td>
+                        <td className="text-end">{formatMoney(item.totalPrice)}</td>
                         <td>
                           {item.workDay} : {item.timeStart} giờ
                         </td>

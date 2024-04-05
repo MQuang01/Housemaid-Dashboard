@@ -26,7 +26,7 @@ function App() {
               <Route path='/dashboard'>
                 <Route path='customers' element={<DashboardCustomer />} />
                 <Route path='employee' element={<DashboardEmployee />} />
-                <Route path='jobs' element={<DashboardJob />} />
+                <Route path='category/:id' element={<DashboardJob />} />
                 <Route path='categories' element={<DashboardCategory/>} />
                 <Route path='histories-order' element={<DashboardHistoryOrder/>} />
                 <Route path='orders' element={<DashboardOrder />} />

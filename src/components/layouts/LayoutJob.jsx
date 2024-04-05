@@ -7,6 +7,7 @@ import { fetchAddJob } from "../../service/JobService";
 import { toast } from 'react-toastify';
 import ModalEditJob from "../modal/ModalEditJob";
 import { fetchSortBy } from "../../service/JobService";
+import { useParams } from 'react-router-dom';
 
 
 const LayoutJob = () => {
@@ -22,6 +23,8 @@ const LayoutJob = () => {
 
     const [sortBy, setSortBy] = useState(null); // Cột hiện đang được sắp xếp
     const [sortDirection, setSortDirection] = useState('asc'); // Hướng sắp xếp: 'asc' hoặc 'desc'
+
+    let { id } = useParams();
 
     const handleSort = (column) => {
         let sortedData;
@@ -120,23 +123,30 @@ const LayoutJob = () => {
     }
 
     useEffect(() => {
-        fetchJobsPaging(dataPage.page).then((data) => {
+        // Kiểm tra nếu idCategory khác undefined hoặc null
+        if (id !== undefined) {
+          fetchJobsPaging(dataPage.page, id).then((data) => {
             setJob(data.content);
-            setDataPage(
-                {
-                    ...dataPage,
-                    totalPage: data.totalPages
-                }
-            );
-        })
-    }, []);
+            setDataPage({
+              ...dataPage,
+              totalPage: data.totalPages
+            });
+          });
+        }
+      }, [id, dataPage.page]); 
 
     useEffect(() => {
+        let filteredJobs = [...job];
+
+        filteredJobs = filteredJobs.filter(job => {
+            // Kiểm tra xem category.id nào của công việc có chứa giá trị 1 không
+            return job.category.some(category => category.id === 1);
+        });
+
         // Thực hiện tìm kiếm khi searchKeyword thay đổi
-        const filteredJobs = job.filter((job) => {
+        filteredJobs = filteredJobs.filter((job) => {
             // Kiểm tra xem tên công việc hoặc category có chứa từ khóa tìm kiếm không
-            return job.name.toLowerCase().includes(searchKeyword.toLowerCase()) ||
-                job.category.name.toLowerCase().includes(searchKeyword.toLowerCase());
+            return job.name.toLowerCase().includes(searchKeyword.toLowerCase());
         });
         // Cập nhật kết quả tìm kiếm
         setSearchResults(filteredJobs);
@@ -151,10 +161,10 @@ const LayoutJob = () => {
             let response;
             if (sortBy === 'price') {
                 // Nếu đang sắp xếp theo giá tiền, gọi fetchSortBy với giá trị của cột hiện tại và hướng sắp xếp
-                response = await fetchSortBy(sortDirection);
+                response = await fetchSortBy(sortDirection, id);
             } else {
                 // Nếu không, gọi fetchJobsPaging để lấy danh sách công việc mặc định
-                response = await fetchJobsPaging(dataPage.page);
+                response = await fetchJobsPaging(dataPage.page, id);
             }
             setJob(response.content);
             setDataPage({
@@ -294,7 +304,10 @@ const LayoutJob = () => {
                                                         {job.price.toLocaleString('vi-VN')} VNĐ
                                                     </td>
                                                     <td style={{ textAlign: 'right' }}>~ {job.timeApprox} phút / đơn vị</td>
-                                                    <td style={{ textAlign: 'right' }}>{job.typeJob}</td>
+                                                    <td style={{ textAlign: 'right' }}>
+                                                        {job.typeJob == "Quantity" && "Số lượng"}
+                                                        {job.typeJob == "Size" && "m2"}
+                                                    </td>
                                                     <td style={{ textAlign: 'right' }}>{job.category.name}</td>
                                                     <td>
                                                         <div className="d-flex gap-3">
