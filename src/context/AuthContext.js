@@ -4,9 +4,9 @@ import { Logout } from "../service/AuthService";
 const AuthContext = createContext();
 
 export const AuthProvider = ({children}) => {
-    const [isLoggedIn, setIsLoggedIn] = useState(!!sessionStorage.getItem("accessToken"));
+    const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("accessToken"));
     useEffect(() => {
-        if(sessionStorage.getItem('accessToken')){
+        if(localStorage.getItem('accessToken')){
             setIsLoggedIn(true)
         }
     }, []);

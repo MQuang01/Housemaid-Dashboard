@@ -17,6 +17,7 @@ const ModelDetailOrder = ({
   handleUpdateStatusOrder,
   isReset,
 }) => {
+  console.log(data);
   return (
     <>
       <Modal show={show} onHide={handleClose} size="lg">
@@ -25,7 +26,7 @@ const ModelDetailOrder = ({
         </ModalHeader>
         <ModalBody>
           <div className="col-xl-12">
-            <h6 className="text-muted">THÔNG TIN</h6>
+            <h6 className="text-muted" onClick={() => console.log("data", data)}>THÔNG TIN</h6>
             <div className="nav-align-top mb-4">
               <ul className="nav nav-tabs nav-fill" role="tablist">
                 <li className="nav-item">
@@ -53,6 +54,20 @@ const ModelDetailOrder = ({
                   >
                     <i class="tf-icons bx bx-user"></i>
                     ĐƠN HÀNG
+                  </button>
+                </li>
+                <li class="nav-item">
+                  <button
+                    type="button"
+                    class="nav-link"
+                    role="tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#navs-justified-employee"
+                    aria-controls="navs-justified-employee"
+                    aria-selected="false"
+                  >
+                    <i class="tf-icons bx bx-user"></i>
+                    Nhân viên
                   </button>
                 </li>
               </ul>
@@ -105,7 +120,7 @@ const ModelDetailOrder = ({
                           <p className="fw-bold">Số lượng giúp việc:</p>
                         </div>
                         <div class="col-md-6">
-                          <p> 2 người</p>
+                          <p>{data?.listEmployee.length} người</p>
                         </div>
                       </div>
                     </div>
@@ -183,6 +198,36 @@ const ModelDetailOrder = ({
                                 ? "sản phẩm"
                                 : "m2"}
                             </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="navs-justified-employee"
+                  role="tabpanel"
+                >
+                  <div class="row">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Hình ảnh</th>
+                          <th scope="col">Họ và tên</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">Điện thoại</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {data?.listEmployee.map((employee, index) => (
+                          <tr key={index}>
+                            <td>{index + 1}</td>
+                            <td><img src={employee.urlImage} alt="employee.png" className="w-75"/></td>
+                            <td>{employee.fullName}</td>
+                            <td>{employee.email}</td>
+                            <td>{employee.phone}</td>
                           </tr>
                         ))}
                       </tbody>
