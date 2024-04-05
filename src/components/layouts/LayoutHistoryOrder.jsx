@@ -53,7 +53,7 @@ const LayoutHistoryOrder = () => {
       setDataOrders(updatedDataOrders);
   
       // Hiển thị thông báo thành công
-      toast.success(`Đã cập nhật trạng thái đơn hàng thành ${status}`);
+      toast.success(`Đã cập nhật trạng thái đơn hàng thành công`);
     } catch (error) {
       // Xử lý lỗi nếu có
       toast.error("Sửa trạng thái đơn hàng bị lỗi: " + error.message);
@@ -92,7 +92,7 @@ const LayoutHistoryOrder = () => {
   }, []);
 
   const [searchKey, setSearchKey] = useState("");
-  const [sortKey, setSortKey] = useState("id");
+  const [sortKey, setSortKey] = useState("status");
   const [sortOrder, setSortOrder] = useState("desc");
   const [filteredOrders, setFilteredOrders] = useState([]);
   const [dataPage, setDataPage] = useState({
@@ -162,7 +162,7 @@ const LayoutHistoryOrder = () => {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Tìm kiếm..."
+                placeholder="Tìm kiếm theo mã code, danh mục, địa chỉ..."
                 onChange={handleSearchChange}
                 defaultValue={searchKey}
                 name={"search"}
@@ -244,7 +244,16 @@ const LayoutHistoryOrder = () => {
                             <i class="fa-solid fa-sort-down"></i>
                           ))}
                       </th>
-                      <th>Trạng thái đơn</th>
+                      <th onClick={() => {
+                          setSortKey("status");
+                          toggleSortOrder();
+                        }}>Trạng thái đơn{" "}
+                        {sortKey === "status" &&
+                          (sortOrder === "asc" ? (
+                            <i class="fa-solid fa-sort-up"></i>
+                          ) : (
+                            <i class="fa-solid fa-sort-down"></i>
+                          ))}</th>
                       <th>Lựa chọn</th>
                     </tr>
                   </thead>
@@ -254,15 +263,15 @@ const LayoutHistoryOrder = () => {
                         <td>{index + 1}</td>
                         <td>{item.currentlyCode}</td>
                         <td>{item.categoryName}</td>
-                        <td>{item.address}</td>
+                        <td style={{wordWrap: "break-word"}}>{item.address}</td>
                         <td>{formatMoney(item.totalPrice)}</td>
                         <td>
                           {item.workDay} : {item.timeStart} giờ
                         </td>
                         <td>
-                            {item.status === "PROCESS" && "Đã xác nhận"}
-                            {item.status === "COMPLETE" && "Đã hoàn thành"}
-                            {item.status === "CANCEL" && "Đã hủy"}
+                            {item.status === "PROCESS" && "Chờ kết quả"}
+                            {item.status === "COMPLETE" && "Hoàn thành"}
+                            {item.status === "CANCEL" && "Hủy"}
                         </td>
                         <td>
                             <button
@@ -274,16 +283,16 @@ const LayoutHistoryOrder = () => {
                             >
                               <i className={"fa-solid fa-eye"}></i>
                             </button>
-                            {(item.status === "PROCESS" || item.status === "CANCEL") && (
+                            {(item.status === "PROCESS") && (
                                 <button
                                     variant="outline-success"
                                     onClick={() => {confirmAlert({
                                       title: 'Thông báo',
-                                      message: `Bạn muốn reset lại đơn đặt dịch vụ có mã: ${item.currentlyCode} này không?`,
+                                      message: `Bạn muốn xác nhận đơn đặt dịch vụ có mã: ${item.currentlyCode} về lại trạng thái "Đã hoàn thành" phải không?`,
                                       buttons: [
                                         {
                                           label: 'Đúng',
-                                          onClick: () => handleUpdateStatusOrder(item.id ,"WAITING")
+                                          onClick: () => handleUpdateStatusOrder(item.id ,"COMPLETE")
                                         },
                                         {
                                           label: 'Không',
@@ -291,9 +300,9 @@ const LayoutHistoryOrder = () => {
                                       ],
                                     })}}
                                     className="btn btn-outline-warning me-2"
-                                    title="Reset hóa đơn"
+                                    title="Hóa đơn hoàn thành"
                                     >
-                                    <i className="fa-solid fa-arrows-rotate"></i>
+                                    <i class="fa-solid fa-check"></i>
                                 </button>  
                             )}
                                  

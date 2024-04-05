@@ -27,7 +27,7 @@ const LayoutManagerOrder = () => {
       setDataOrders(updatedDataOrders);
   
       // Hiển thị thông báo thành công
-      toast.success(`Đã cập nhật trạng thái đơn hàng thành ${status}`);
+      toast.success(`Đã cập nhật trạng thái đơn hàng thành công`);
     } catch (error) {
       // Xử lý lỗi nếu có
       toast.error("Sửa trạng thái đơn hàng bị lỗi: " + error.message);
@@ -110,6 +110,7 @@ const LayoutManagerOrder = () => {
         return sortOrder === "asc" ? comparison : comparison * -1;
       });
     }
+    
     // Tính toán số trang và cập nhật dataPage
     const totalPage = Math.ceil(filteredOrders.length / pageSize);
     setDataPage((prevDataPage) => ({
@@ -140,7 +141,7 @@ const LayoutManagerOrder = () => {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Tìm kiếm..."
+                placeholder="Tìm kiếm theo mã code, danh mục, địa chỉ..."
                 onChange={handleSearchChange}
                 defaultValue={searchKey}
                 name={"search"}
@@ -232,13 +233,13 @@ const LayoutManagerOrder = () => {
                         <td>{index + 1}</td>
                         <td>{item.currentlyCode}</td>
                         <td>{item.categoryName}</td>
-                        <td>{item.address}</td>
+                        <td style={{wordWrap: "break-word"}}>{item.address}</td>
                         <td>{formatMoney(item.totalPrice)}</td>
                         <td>
                           {item.workDay} : {item.timeStart} giờ
                         </td>
                         <td>
-                          {item.status === "WAITING" ? "Đang chờ xử lý" : ""}
+                          {item.status === "WAITING" ? "Chờ xác nhận" : ""}
                         </td>
                         <td>
                           <div className="">
