@@ -30,7 +30,6 @@ const LayoutEmployee = () => {
         const employeeToEdit = await fetchFindEmployeeById(employeeId);
         // Nếu tồn tại công việc, cập nhật state selectedJob
         if (employeeToEdit) {
-            console.log("đã tìm thấy nhân viên",employeeToEdit)
             setSelectedEmployee(employeeToEdit);
             setShowEditModal(true);
         }

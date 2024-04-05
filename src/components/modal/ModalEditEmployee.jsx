@@ -12,6 +12,8 @@ const ModalEditEmployee = ({ show, handleClose, employeeData, onUpdateEmployee }
     const [imageUrl, setImageUrl] = useState(''); // State để lưu trữ đường link hình ảnh
     const [isShowConfirmPassword, setIsShowConfirmPassword] = useState(false);
     const [isShowPassword, setIsShowPassword] = useState(false);
+    const [selectedFile, setSelectedFile] = useState();
+
 
     const schema = yup.object().shape({
         fullName: yup.string().required('Tên công việc không được để trống'),
@@ -56,34 +58,21 @@ const ModalEditEmployee = ({ show, handleClose, employeeData, onUpdateEmployee }
     }, [show, employeeData, setValue]);
 
     const handleFileInputChange = (event) => {
-        const file = event.target.files[0];
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            setImageUrl(reader.result);
-        };
-        if (file) {
-            reader.readAsDataURL(file);
-        }
+        const file = event.target.files[0]
+        setSelectedFile(file);
     };
 
-    const onSubmit = async (data) => {
-
-        data = {
-            ...data,
-            typeUser:"EMPLOYEE",
-            // "username": employeeData.username,
-            // "roles": [
-            //     {
-            //         "role": "ADMIN"
-            //     }
-            // ]
-            // urlImage: imageUrl
-        };
-        console.log("dữ liệu cần cập nhật data",data)
+    const onSubmit = async (data, e) => {
+        e.preventDefault();
+        const form = new FormData();
+        for (const key in data) {
+            if (key === 'avatar') continue
+            form.append(key, data[key])
+        }
+        form.append('avatar', selectedFile)
 
         try {
-
-            const updatedEmployee = await fetchUpdateEmployee(employeeData.id, data);
+            const updatedEmployee = await fetchUpdateEmployee(employeeData.id, form);
 
             if (updatedEmployee) {
                 onUpdateEmployee(updatedEmployee);
@@ -118,26 +107,19 @@ const ModalEditEmployee = ({ show, handleClose, employeeData, onUpdateEmployee }
                             <label className="input-group-btn">
                                     <span className="btn btn-primary">
                                         Tải ảnh<input
-                                        type="file"
-                                        style={{ display: "none" }}
-                                        id="fileInput"
-                                        // name={name}
-                                        // ref={ref}
-                                        accept="image/*"
-                                        onChange={handleFileInputChange}
-                                    />
+                                    type="file"
+                                    className={`form-control ${selectedFile === null ? "is-invalid" : ""}`}
+                                    accept="image/*" // Chỉ chấp nhận file ảnh
+                                    onChange={handleFileInputChange}
+                                />
                                     </span>
                             </label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                id="imageLink"
-                                value={imageUrl}
-                                readOnly
-                            />
+                            {selectedFile != null && (
+                                    <img className={"w-50"} style={{marginTop: 12, marginLeft: 40}}
+                                         src={URL.createObjectURL(selectedFile)} alt={"avatar"}/>
+                                )}
 
                         </div>
-                        {/*{errors.serviceImage && <span className="text-danger">{errors.serviceImage.message}</span>}*/}
                     </div>
 
 
@@ -187,20 +169,6 @@ const ModalEditEmployee = ({ show, handleClose, employeeData, onUpdateEmployee }
 
 
                     </div>
-
-                    <div className="row mb-3">
-
-                        {/*<div className="col-md-6">*/}
-                        {/*    <label htmlFor="username" className="form-label">Tên tài khoản:</label>*/}
-                        {/*    <input type="text" className="form-control" id="username" {...register("username")} />*/}
-                        {/*    {errors.username && <span className="text-danger">{errors.username.message}</span>}*/}
-                        {/*</div>*/}
-                        {/*<div className="col-md-6">*/}
-                        {/*    <label htmlFor="roles" className="form-label">Loại tài khoản:</label>*/}
-                        {/*    <input type="text" className="form-control" id="roles" {...register("roles")} />*/}
-                        {/*</div>*/}
-                    </div>
-
 
                     {imageUrl && <img src={imageUrl} alt="Preview" className="img-fluid mb-3 modal-image" style={{ width: '120px', height: '120px' }} />}
                 </form>

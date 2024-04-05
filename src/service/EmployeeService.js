@@ -35,7 +35,11 @@ export const fetchUpdateEmployee = async (employeeId, employeeData) => {
 
 export const fetchDeleteEmployee = async (employeeId) => {
     try {
-        const response = await axios.delete(`${InforUrl}/users/${employeeId}`);
+        const response = await axios.delete(`${InforUrl}/users/${employeeId}`, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem("accessToken")}`
+            }
+        });
         return response.data;
     } catch (error) {
         console.error('Error deleting Employee: ', error);
