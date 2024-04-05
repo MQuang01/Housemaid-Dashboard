@@ -17,7 +17,7 @@ const ModelDetailOrder = ({
   handleUpdateStatusOrder,
   isReset,
 }) => {
-  console.log(data);
+  console.log(data)
   return (
     <>
       <Modal show={show} onHide={handleClose} size="lg">
@@ -104,7 +104,11 @@ const ModelDetailOrder = ({
                       Giới tính
                     </label>
                     <div class="col-md-9">
-                      <p className="form-control">{data?.user?.gender}</p>
+                      <p className="form-control">
+                        {data?.user?.gender === "MALE" && "Nam"}
+                        {data?.user?.gender === "FEMALE" && "Nữ"}
+                        {data?.user?.gender === "OTHER" && "Khác"}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -240,7 +244,6 @@ const ModelDetailOrder = ({
         </ModalBody>
         <ModalFooter>
           {isReset === "reset" ? (
-            data?.status === "COMPLETE" ? (
               <Button
                 variant="secondary"
                 className="btn-label-primary"
@@ -248,33 +251,6 @@ const ModelDetailOrder = ({
               >
                 Đóng
               </Button>
-            ) : (
-              <>
-                <Button
-                  variant="warning"
-                  className="btn btn-label-success"
-                  onClick={() => {
-                    const isConfirmed = window.confirm(
-                      "Bạn muốn reset lại hóa đơn có mã: " +
-                        data.currentlyCode +
-                        " này không?"
-                    );
-                    if (isConfirmed) {
-                      handleUpdateStatusOrder(data.id, "WAITING");
-                    }
-                  }}
-                >
-                  Reset hóa đơn
-                </Button>
-                <Button
-                  variant="secondary"
-                  className="btn-label-primary"
-                  onClick={handleClose}
-                >
-                  Đóng
-                </Button>
-              </>
-            )
           ) : (
             <>
               <Button
