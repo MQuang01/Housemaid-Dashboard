@@ -156,6 +156,9 @@ const ModalinfoCustomer = ({ show, handleClose, employeeData, onUpdateEmployee }
                                 <option key="2" value="FEMALE" selected={getValues("gender") === "2"}>
                                     Nữ
                                 </option>
+                                <option key="3" value="OTHER" selected={getValues("gender") === "3"}>
+                                    Khác
+                                </option>
 
                             </select>
                             {errors.gender && <span className="text-danger">{errors.gender.message}</span>}
