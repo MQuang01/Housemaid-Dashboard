@@ -60,12 +60,7 @@ const Menu = ({ active }) => {
                             <div data-i18n="Tables">Nhân viên</div>
                         </a>
                     </li>
-                    <li class={`menu-item ${active === 'job' ? "active" : ""}`}>
-                        <a href="/dashboard/jobs" class="menu-link">
-                            <i class="menu-icon tf-icons fa fa-table"></i>
-                            <div data-i18n="Boxicons">Dịch vụ</div>
-                        </a>
-                    </li>
+                
                     <li className={`menu-item ${active === 'category' ? "active" : ""}`}>
                         <a href="/dashboard/categories" className="menu-link">
                             <i className="menu-icon tf-icons fa fa-table"></i>

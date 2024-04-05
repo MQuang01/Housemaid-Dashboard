@@ -17,7 +17,7 @@ const ModelDetailOrder = ({
   handleUpdateStatusOrder,
   isReset,
 }) => {
-  console.log(data)
+  
   return (
     <>
       <Modal show={show} onHide={handleClose} size="lg">

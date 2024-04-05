@@ -22,7 +22,6 @@ const LayoutCategory = () => {
 
     const [show, setShow] = useState(false);
     const handleShowCreateModal = () => {
-        console.log("aaaaa");
         setShow(true);
     };
     const handleCategoryCreate = async (newCategory) => {
@@ -30,6 +29,7 @@ const LayoutCategory = () => {
             // Gọi lại API để fetch danh sách công việc mới từ cơ sở dữ liệu
             const response = await fetchCategories(newCategory);
             // Cập nhật state job với danh sách công việc mới
+            
             setCategories(response.content);
         } catch (error) {
             console.error('Error updating job list after creation: ', error);
@@ -89,7 +89,7 @@ const LayoutCategory = () => {
     const handleCloseConfirmModal = () => {
         setShowConfirmModal(false); // Ẩn modal xác nhận xóa nếu người dùng hủy bỏ
     };
-
+    
     return(
         <>
             <div className="layout-page">
@@ -108,23 +108,33 @@ const LayoutCategory = () => {
                                 <table className="table table-light table-hover">
                                     <thead>
                                     <tr>
-                                        <th>STT</th>
-                                        <th>Tên loại dịch vụ</th>
-                                        <th>Ảnh</th>
-                                        <th>Thao tác</th>
+                                        <th className="col">STT</th>
+                                        <th className="col">Ảnh</th>
+                                        <th className="col">Tên loại danh mục</th>
+                                        <th className="col-2 text-center">Số lượng dịch vụ</th>
+                                        <th className="col">Thao tác</th>
                                     </tr>
                                     </thead>
                                     <tbody className="table-border-bottom-0">
                                     {categories.map((category, index) => (
                                         <tr key={category.id}>
                                             <td>{index + 1}</td>
-                                            <td><i className="fa-lg text-danger "></i> <strong>{category.name}</strong></td>
                                             <td>
                                                 <img src={category.fileInfo.url} height="40px" width="40px" />
                                             </td>
+                                            <td><i className="fa-lg text-danger "></i> <strong>{category.name}</strong></td>
+                                            <td className="text-end">{category.quantityJob}</td>
 
                                             <td>
                                                 <div className="d-flex gap-3">
+                                                    <a
+                                                        href={`/dashboard/category/${category.id}`}
+                                                        className="btn btn-link p-0 me-2 text-info"
+                                                        style={{ fontSize: '18px', padding: '10px', color: '#56DDA1' }}
+                                                        title="Xem dịch vụ"
+                                                    >
+                                                        <i className="fa fa-eye"></i>
+                                                    </a>
                                                     <button
                                                         type="button"
                                                         className="btn btn-link p-0 me-2"
